@@ -88,7 +88,6 @@
 		29B97314FDCFA39411CA2CEA /* Heinzelnisse */ = {
 			isa = PBXGroup;
 			children = (
-				DA789E4B1126EE29000F1A03 /* Application Tests */,
 				DAFC03981126E1F800F33DF5 /* Unit Tests */,
 				080E96DDFE201D6D7F000001 /* Classes */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
@@ -129,13 +128,6 @@
 				288765070DF74369002DB57D /* CoreGraphics.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		DA789E4B1126EE29000F1A03 /* Application Tests */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = "Application Tests";
 			sourceTree = "<group>";
 		};
 		DAFC03981126E1F800F33DF5 /* Unit Tests */ = {
