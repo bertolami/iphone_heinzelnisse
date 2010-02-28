@@ -24,6 +24,29 @@
 
 @implementation FirstViewController
 
+@synthesize fetchedResultsController;
+@synthesize managedObjectContext;
+
+-(NSFetchedResultsController*) fetchedResultsController {
+	if(fetchedResultsController !=nil) {
+		return fetchedResultsController;
+	}
+	NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+	NSEntityDescription *entity = [NSEntityDescription entityForName:@"Translation" 
+											  inManagedObjectContext:managedObjectContext];
+	[fetchRequest setEntity:entity];
+	NSFetchedResultsController *aFetchedResultsController = [[NSFetchedResultsController alloc] 
+															 initWithFetchRequest:fetchRequest
+															 managedObjectContext:managedObjectContext 
+															 sectionNameKeyPath:nil 
+															 cacheName:@"Root"];
+	aFetchedResultsController.delegate = self;
+	self.fetchedResultsController = aFetchedResultsController;
+	[aFetchedResultsController release];
+	
+	[fetchRequest release];
+	return fetchedResultsController;
+}
 
 /*
 // The designated initializer. Override to perform setup that is required before the view is loaded.

@@ -15,10 +15,41 @@
 		282CCBFE0DB6C98000C4EA27 /* SecondView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 282CCBFD0DB6C98000C4EA27 /* SecondView.xib */; };
 		288765080DF74369002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765070DF74369002DB57D /* CoreGraphics.framework */; };
 		28AD73880D9D96C1002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD73870D9D96C1002E5188 /* MainWindow.xib */; };
-		DA789DFD1126EB02000F1A03 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = DAFC037911216F0F00F33DF5 /* libsqlite3.dylib */; };
-		DA789E7E1126EFEC000F1A03 /* DBAccessTest.m in Sources */ = {isa = PBXBuildFile; fileRef = DAFC039F1126E2A700F33DF5 /* DBAccessTest.m */; };
+		DA789EB711287F78000F1A03 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA789EB611287F78000F1A03 /* CoreData.framework */; };
+		DA789ED011288100000F1A03 /* Heinzelnisse.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = DA789ECE11288100000F1A03 /* Heinzelnisse.xcdatamodel */; };
+		DA789EDA1128824B000F1A03 /* Translation.m in Sources */ = {isa = PBXBuildFile; fileRef = DA789ED81128824B000F1A03 /* Translation.m */; };
+		DA9F18BC113A90E900BC260B /* FirstView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA9F18BB113A90E900BC260B /* FirstView.xib */; };
+		DA9F18D2113A91A000BC260B /* FirstView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA9F18BB113A90E900BC260B /* FirstView.xib */; };
+		DAC79235113A7EFA00B3C55F /* TranslationTest.m in Sources */ = {isa = PBXBuildFile; fileRef = DAC79234113A7EFA00B3C55F /* TranslationTest.m */; };
+		DAC79270113A813B00B3C55F /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA789EB611287F78000F1A03 /* CoreData.framework */; };
+		DAC792B4113A836C00B3C55F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
+		DAC792CE113A875D00B3C55F /* Translation.m in Sources */ = {isa = PBXBuildFile; fileRef = DA789ED81128824B000F1A03 /* Translation.m */; };
+		DAC792E0113A882400B3C55F /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD73870D9D96C1002E5188 /* MainWindow.xib */; };
+		DAC792E1113A882400B3C55F /* SecondView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 282CCBFD0DB6C98000C4EA27 /* SecondView.xib */; };
+		DAC792E3113A882400B3C55F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
+		DAC792E4113A882400B3C55F /* HeinzelnisseAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* HeinzelnisseAppDelegate.m */; };
+		DAC792E5113A882400B3C55F /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28216C960DB411BC00E5133A /* FirstViewController.m */; };
+		DAC792E6113A882400B3C55F /* Heinzelnisse.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = DA789ECE11288100000F1A03 /* Heinzelnisse.xcdatamodel */; };
+		DAC792E7113A882400B3C55F /* Translation.m in Sources */ = {isa = PBXBuildFile; fileRef = DA789ED81128824B000F1A03 /* Translation.m */; };
+		DAC792E9113A882400B3C55F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
+		DAC792EA113A882400B3C55F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
+		DAC792EB113A882400B3C55F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765070DF74369002DB57D /* CoreGraphics.framework */; };
+		DAC792EC113A882400B3C55F /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = DAFC037911216F0F00F33DF5 /* libsqlite3.dylib */; };
+		DAC792ED113A882400B3C55F /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA789EB611287F78000F1A03 /* CoreData.framework */; };
+		DAC7930C113A88A200B3C55F /* HeinzelnisseTests.octest in Resources */ = {isa = PBXBuildFile; fileRef = DAC79301113A886100B3C55F /* HeinzelnisseTests.octest */; };
+		DAC79313113A88E000B3C55F /* FetchTranslationsTest.m in Sources */ = {isa = PBXBuildFile; fileRef = DAC79312113A88E000B3C55F /* FetchTranslationsTest.m */; };
 		DAFC037A11216F0F00F33DF5 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = DAFC037911216F0F00F33DF5 /* libsqlite3.dylib */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		DAC79306113A888000B3C55F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = DAC79300113A886100B3C55F;
+			remoteInfo = HeinzelnisseTests;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -34,9 +65,22 @@
 		28AD73870D9D96C1002E5188 /* MainWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Heinzelnisse-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Heinzelnisse-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
+		DA789EB611287F78000F1A03 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		DA789ECE11288100000F1A03 /* Heinzelnisse.xcdatamodel */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = wrapper.xcdatamodel; path = Heinzelnisse.xcdatamodel; sourceTree = "<group>"; };
+		DA789ED71128824B000F1A03 /* Translation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Translation.h; sourceTree = "<group>"; };
+		DA789ED81128824B000F1A03 /* Translation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Translation.m; sourceTree = "<group>"; };
+		DA9F18BB113A90E900BC260B /* FirstView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FirstView.xib; sourceTree = "<group>"; };
+		DAC7922B113A7E8F00B3C55F /* LogicTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LogicTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		DAC7922C113A7E8F00B3C55F /* LogicTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "LogicTests-Info.plist"; sourceTree = "<group>"; };
+		DAC79233113A7EFA00B3C55F /* TranslationTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TranslationTest.h; path = unit_tests/TranslationTest.h; sourceTree = "<group>"; };
+		DAC79234113A7EFA00B3C55F /* TranslationTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TranslationTest.m; path = unit_tests/TranslationTest.m; sourceTree = "<group>"; };
+		DAC792F1113A882400B3C55F /* Heinzelnisse.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Heinzelnisse.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		DAC792F3113A882400B3C55F /* Heinzelnisse-Info copy.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Heinzelnisse-Info copy.plist"; sourceTree = "<group>"; };
+		DAC79301113A886100B3C55F /* HeinzelnisseTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HeinzelnisseTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		DAC79302113A886100B3C55F /* HeinzelnisseTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "HeinzelnisseTests-Info.plist"; sourceTree = "<group>"; };
+		DAC79311113A88E000B3C55F /* FetchTranslationsTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FetchTranslationsTest.h; path = unit_tests/FetchTranslationsTest.h; sourceTree = "<group>"; };
+		DAC79312113A88E000B3C55F /* FetchTranslationsTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FetchTranslationsTest.m; path = unit_tests/FetchTranslationsTest.m; sourceTree = "<group>"; };
 		DAFC037911216F0F00F33DF5 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
-		DAFC038D1126E18800F33DF5 /* Unit Tests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Unit Tests.octest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		DAFC038E1126E18800F33DF5 /* Unit Tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Unit Tests-Info.plist"; sourceTree = "<group>"; };
 		DAFC039E1126E2A700F33DF5 /* DBAccessTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DBAccessTest.h; path = unit_tests/DBAccessTest.h; sourceTree = "<group>"; };
 		DAFC039F1126E2A700F33DF5 /* DBAccessTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DBAccessTest.m; path = unit_tests/DBAccessTest.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -50,14 +94,35 @@
 				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
 				288765080DF74369002DB57D /* CoreGraphics.framework in Frameworks */,
 				DAFC037A11216F0F00F33DF5 /* libsqlite3.dylib in Frameworks */,
+				DA789EB711287F78000F1A03 /* CoreData.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		DAFC038A1126E18700F33DF5 /* Frameworks */ = {
+		DAC79228113A7E8F00B3C55F /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DA789DFD1126EB02000F1A03 /* libsqlite3.dylib in Frameworks */,
+				DAC79270113A813B00B3C55F /* CoreData.framework in Frameworks */,
+				DAC792B4113A836C00B3C55F /* UIKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DAC792E8113A882400B3C55F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DAC792E9113A882400B3C55F /* Foundation.framework in Frameworks */,
+				DAC792EA113A882400B3C55F /* UIKit.framework in Frameworks */,
+				DAC792EB113A882400B3C55F /* CoreGraphics.framework in Frameworks */,
+				DAC792EC113A882400B3C55F /* libsqlite3.dylib in Frameworks */,
+				DAC792ED113A882400B3C55F /* CoreData.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DAC792FE113A886100B3C55F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -67,6 +132,8 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				DA789ED71128824B000F1A03 /* Translation.h */,
+				DA789ED81128824B000F1A03 /* Translation.m */,
 				28216C950DB411BC00E5133A /* FirstViewController.h */,
 				28216C960DB411BC00E5133A /* FirstViewController.m */,
 				1D3623240D0F684500981E51 /* HeinzelnisseAppDelegate.h */,
@@ -79,7 +146,9 @@
 			isa = PBXGroup;
 			children = (
 				1D6058910D05DD3D006BFB54 /* Heinzelnisse.app */,
-				DAFC038D1126E18800F33DF5 /* Unit Tests.octest */,
+				DAC7922B113A7E8F00B3C55F /* LogicTests.octest */,
+				DAC792F1113A882400B3C55F /* Heinzelnisse.app */,
+				DAC79301113A886100B3C55F /* HeinzelnisseTests.octest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -87,14 +156,18 @@
 		29B97314FDCFA39411CA2CEA /* Heinzelnisse */ = {
 			isa = PBXGroup;
 			children = (
-				DAFC03981126E1F800F33DF5 /* Unit Tests */,
+				DAC79231113A7ECA00B3C55F /* Logic Tests */,
+				DAFC03981126E1F800F33DF5 /* Heinzelnisse Tests */,
 				080E96DDFE201D6D7F000001 /* Classes */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
 				29B97317FDCFA39411CA2CEA /* Resources */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
 				DAFC037911216F0F00F33DF5 /* libsqlite3.dylib */,
-				DAFC038E1126E18800F33DF5 /* Unit Tests-Info.plist */,
+				DA789EB611287F78000F1A03 /* CoreData.framework */,
+				DA789ECE11288100000F1A03 /* Heinzelnisse.xcdatamodel */,
+				DAC7922C113A7E8F00B3C55F /* LogicTests-Info.plist */,
+				DAC79302113A886100B3C55F /* HeinzelnisseTests-Info.plist */,
 			);
 			name = Heinzelnisse;
 			sourceTree = "<group>";
@@ -112,8 +185,10 @@
 			isa = PBXGroup;
 			children = (
 				282CCBFD0DB6C98000C4EA27 /* SecondView.xib */,
+				DA9F18BB113A90E900BC260B /* FirstView.xib */,
 				28AD73870D9D96C1002E5188 /* MainWindow.xib */,
 				8D1107310486CEB800E47090 /* Heinzelnisse-Info.plist */,
+				DAC792F3113A882400B3C55F /* Heinzelnisse-Info copy.plist */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -128,13 +203,24 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		DAFC03981126E1F800F33DF5 /* Unit Tests */ = {
+		DAC79231113A7ECA00B3C55F /* Logic Tests */ = {
+			isa = PBXGroup;
+			children = (
+				DAC79233113A7EFA00B3C55F /* TranslationTest.h */,
+				DAC79234113A7EFA00B3C55F /* TranslationTest.m */,
+			);
+			name = "Logic Tests";
+			sourceTree = "<group>";
+		};
+		DAFC03981126E1F800F33DF5 /* Heinzelnisse Tests */ = {
 			isa = PBXGroup;
 			children = (
 				DAFC039E1126E2A700F33DF5 /* DBAccessTest.h */,
 				DAFC039F1126E2A700F33DF5 /* DBAccessTest.m */,
+				DAC79311113A88E000B3C55F /* FetchTranslationsTest.h */,
+				DAC79312113A88E000B3C55F /* FetchTranslationsTest.m */,
 			);
-			name = "Unit Tests";
+			name = "Heinzelnisse Tests";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -157,22 +243,58 @@
 			productReference = 1D6058910D05DD3D006BFB54 /* Heinzelnisse.app */;
 			productType = "com.apple.product-type.application";
 		};
-		DAFC038C1126E18700F33DF5 /* Unit Tests */ = {
+		DAC7922A113A7E8F00B3C55F /* LogicTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = DAFC03911126E18800F33DF5 /* Build configuration list for PBXNativeTarget "Unit Tests" */;
+			buildConfigurationList = DAC79230113A7E9200B3C55F /* Build configuration list for PBXNativeTarget "LogicTests" */;
 			buildPhases = (
-				DAFC03881126E18700F33DF5 /* Resources */,
-				DAFC03891126E18700F33DF5 /* Sources */,
-				DAFC038A1126E18700F33DF5 /* Frameworks */,
-				DAFC038B1126E18700F33DF5 /* ShellScript */,
+				DAC79226113A7E8F00B3C55F /* Resources */,
+				DAC79227113A7E8F00B3C55F /* Sources */,
+				DAC79228113A7E8F00B3C55F /* Frameworks */,
+				DAC79229113A7E8F00B3C55F /* ShellScript */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = "Unit Tests";
-			productName = "Unit Tests";
-			productReference = DAFC038D1126E18800F33DF5 /* Unit Tests.octest */;
+			name = LogicTests;
+			productName = LogicTests;
+			productReference = DAC7922B113A7E8F00B3C55F /* LogicTests.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
+		DAC792DE113A882400B3C55F /* HeinzelnisseTesting */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DAC792EE113A882400B3C55F /* Build configuration list for PBXNativeTarget "HeinzelnisseTesting" */;
+			buildPhases = (
+				DAC792DF113A882400B3C55F /* Resources */,
+				DAC792E2113A882400B3C55F /* Sources */,
+				DAC792E8113A882400B3C55F /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				DAC79307113A888000B3C55F /* PBXTargetDependency */,
+			);
+			name = HeinzelnisseTesting;
+			productName = Heinzelnisse;
+			productReference = DAC792F1113A882400B3C55F /* Heinzelnisse.app */;
+			productType = "com.apple.product-type.application";
+		};
+		DAC79300113A886100B3C55F /* HeinzelnisseTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DAC79305113A886300B3C55F /* Build configuration list for PBXNativeTarget "HeinzelnisseTests" */;
+			buildPhases = (
+				DAC792FC113A886100B3C55F /* Resources */,
+				DAC792FD113A886100B3C55F /* Sources */,
+				DAC792FE113A886100B3C55F /* Frameworks */,
+				DAC792FF113A886100B3C55F /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = HeinzelnisseTests;
+			productName = HeinzelnisseTests;
+			productReference = DAC79301113A886100B3C55F /* HeinzelnisseTests.octest */;
 			productType = "com.apple.product-type.bundle";
 		};
 /* End PBXNativeTarget section */
@@ -191,7 +313,9 @@
 			projectRoot = "";
 			targets = (
 				1D6058900D05DD3D006BFB54 /* Heinzelnisse */,
-				DAFC038C1126E18700F33DF5 /* Unit Tests */,
+				DAC7922A113A7E8F00B3C55F /* LogicTests */,
+				DAC792DE113A882400B3C55F /* HeinzelnisseTesting */,
+				DAC79300113A886100B3C55F /* HeinzelnisseTests */,
 			);
 		};
 /* End PBXProject section */
@@ -203,20 +327,52 @@
 			files = (
 				28AD73880D9D96C1002E5188 /* MainWindow.xib in Resources */,
 				282CCBFE0DB6C98000C4EA27 /* SecondView.xib in Resources */,
+				DA9F18D2113A91A000BC260B /* FirstView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		DAFC03881126E18700F33DF5 /* Resources */ = {
+		DAC79226113A7E8F00B3C55F /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		DAC792DF113A882400B3C55F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DAC7930C113A88A200B3C55F /* HeinzelnisseTests.octest in Resources */,
+				DAC792E0113A882400B3C55F /* MainWindow.xib in Resources */,
+				DAC792E1113A882400B3C55F /* SecondView.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DAC792FC113A886100B3C55F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DA9F18BC113A90E900BC260B /* FirstView.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		DAFC038B1126E18700F33DF5 /* ShellScript */ = {
+		DAC79229113A7E8F00B3C55F /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+		DAC792FF113A886100B3C55F /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -239,18 +395,49 @@
 				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
 				1D3623260D0F684500981E51 /* HeinzelnisseAppDelegate.m in Sources */,
 				28216C970DB411BC00E5133A /* FirstViewController.m in Sources */,
+				DA789ED011288100000F1A03 /* Heinzelnisse.xcdatamodel in Sources */,
+				DA789EDA1128824B000F1A03 /* Translation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		DAFC03891126E18700F33DF5 /* Sources */ = {
+		DAC79227113A7E8F00B3C55F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DA789E7E1126EFEC000F1A03 /* DBAccessTest.m in Sources */,
+				DAC79235113A7EFA00B3C55F /* TranslationTest.m in Sources */,
+				DAC792CE113A875D00B3C55F /* Translation.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DAC792E2113A882400B3C55F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DAC792E3113A882400B3C55F /* main.m in Sources */,
+				DAC792E4113A882400B3C55F /* HeinzelnisseAppDelegate.m in Sources */,
+				DAC792E5113A882400B3C55F /* FirstViewController.m in Sources */,
+				DAC792E6113A882400B3C55F /* Heinzelnisse.xcdatamodel in Sources */,
+				DAC792E7113A882400B3C55F /* Translation.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DAC792FD113A886100B3C55F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DAC79313113A88E000B3C55F /* FetchTranslationsTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		DAC79307113A888000B3C55F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = DAC79300113A886100B3C55F /* HeinzelnisseTests */;
+			targetProxy = DAC79306113A888000B3C55F /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		1D6058940D05DD3E006BFB54 /* Debug */ = {
@@ -305,7 +492,7 @@
 			};
 			name = Release;
 		};
-		DAFC038F1126E18800F33DF5 /* Debug */ = {
+		DAC7922E113A7E9100B3C55F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -318,7 +505,7 @@
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
-				INFOPLIST_FILE = "Unit Tests-Info.plist";
+				INFOPLIST_FILE = "LogicTests-Info.plist";
 				OTHER_LDFLAGS = (
 					"-framework",
 					Foundation,
@@ -328,12 +515,12 @@
 					UIKit,
 				);
 				PREBINDING = NO;
-				PRODUCT_NAME = "Unit Tests";
+				PRODUCT_NAME = LogicTests;
 				WRAPPER_EXTENSION = octest;
 			};
 			name = Debug;
 		};
-		DAFC03901126E18800F33DF5 /* Release */ = {
+		DAC7922F113A7E9100B3C55F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -345,7 +532,7 @@
 				);
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
-				INFOPLIST_FILE = "Unit Tests-Info.plist";
+				INFOPLIST_FILE = "LogicTests-Info.plist";
 				OTHER_LDFLAGS = (
 					"-framework",
 					Foundation,
@@ -355,7 +542,89 @@
 					UIKit,
 				);
 				PREBINDING = NO;
-				PRODUCT_NAME = "Unit Tests";
+				PRODUCT_NAME = LogicTests;
+				WRAPPER_EXTENSION = octest;
+				ZERO_LINK = NO;
+			};
+			name = Release;
+		};
+		DAC792EF113A882400B3C55F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = Heinzelnisse_Prefix.pch;
+				INFOPLIST_FILE = "Heinzelnisse-Info copy.plist";
+				PRODUCT_NAME = Heinzelnisse;
+			};
+			name = Debug;
+		};
+		DAC792F0113A882400B3C55F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = Heinzelnisse_Prefix.pch;
+				INFOPLIST_FILE = "Heinzelnisse-Info copy.plist";
+				PRODUCT_NAME = Heinzelnisse;
+			};
+			name = Release;
+		};
+		DAC79303113A886300B3C55F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
+					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+				);
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				INFOPLIST_FILE = "HeinzelnisseTests-Info.plist";
+				OTHER_LDFLAGS = (
+					"-framework",
+					Foundation,
+					"-framework",
+					SenTestingKit,
+					"-framework",
+					UIKit,
+				);
+				PREBINDING = NO;
+				PRODUCT_NAME = HeinzelnisseTests;
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		DAC79304113A886300B3C55F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
+					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+				);
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				INFOPLIST_FILE = "HeinzelnisseTests-Info.plist";
+				OTHER_LDFLAGS = (
+					"-framework",
+					Foundation,
+					"-framework",
+					SenTestingKit,
+					"-framework",
+					UIKit,
+				);
+				PREBINDING = NO;
+				PRODUCT_NAME = HeinzelnisseTests;
 				WRAPPER_EXTENSION = octest;
 				ZERO_LINK = NO;
 			};
@@ -382,11 +651,29 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		DAFC03911126E18800F33DF5 /* Build configuration list for PBXNativeTarget "Unit Tests" */ = {
+		DAC79230113A7E9200B3C55F /* Build configuration list for PBXNativeTarget "LogicTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				DAFC038F1126E18800F33DF5 /* Debug */,
-				DAFC03901126E18800F33DF5 /* Release */,
+				DAC7922E113A7E9100B3C55F /* Debug */,
+				DAC7922F113A7E9100B3C55F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DAC792EE113A882400B3C55F /* Build configuration list for PBXNativeTarget "HeinzelnisseTesting" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DAC792EF113A882400B3C55F /* Debug */,
+				DAC792F0113A882400B3C55F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DAC79305113A886300B3C55F /* Build configuration list for PBXNativeTarget "HeinzelnisseTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DAC79303113A886300B3C55F /* Debug */,
+				DAC79304113A886300B3C55F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
