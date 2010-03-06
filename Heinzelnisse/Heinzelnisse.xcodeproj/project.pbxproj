@@ -20,6 +20,10 @@
 		DA789EDA1128824B000F1A03 /* Translation.m in Sources */ = {isa = PBXBuildFile; fileRef = DA789ED81128824B000F1A03 /* Translation.m */; };
 		DA9F18BC113A90E900BC260B /* FirstView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA9F18BB113A90E900BC260B /* FirstView.xib */; };
 		DA9F18D2113A91A000BC260B /* FirstView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA9F18BB113A90E900BC260B /* FirstView.xib */; };
+		DA9F1A9B1142B59B00BC260B /* Dataloader.m in Sources */ = {isa = PBXBuildFile; fileRef = DA9F1A9A1142B59B00BC260B /* Dataloader.m */; };
+		DA9F1A9C1142B59B00BC260B /* Dataloader.m in Sources */ = {isa = PBXBuildFile; fileRef = DA9F1A9A1142B59B00BC260B /* Dataloader.m */; };
+		DA9F1A9E1142B6E700BC260B /* heinzelliste.txt in Resources */ = {isa = PBXBuildFile; fileRef = DA9F1A9D1142B6E700BC260B /* heinzelliste.txt */; };
+		DA9F1A9F1142B6E700BC260B /* heinzelliste.txt in Resources */ = {isa = PBXBuildFile; fileRef = DA9F1A9D1142B6E700BC260B /* heinzelliste.txt */; };
 		DAC79235113A7EFA00B3C55F /* TranslationTest.m in Sources */ = {isa = PBXBuildFile; fileRef = DAC79234113A7EFA00B3C55F /* TranslationTest.m */; };
 		DAC79270113A813B00B3C55F /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA789EB611287F78000F1A03 /* CoreData.framework */; };
 		DAC792B4113A836C00B3C55F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
@@ -70,6 +74,9 @@
 		DA789ED71128824B000F1A03 /* Translation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Translation.h; sourceTree = "<group>"; };
 		DA789ED81128824B000F1A03 /* Translation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Translation.m; sourceTree = "<group>"; };
 		DA9F18BB113A90E900BC260B /* FirstView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FirstView.xib; sourceTree = "<group>"; };
+		DA9F1A991142B59B00BC260B /* Dataloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Dataloader.h; sourceTree = "<group>"; };
+		DA9F1A9A1142B59B00BC260B /* Dataloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Dataloader.m; sourceTree = "<group>"; };
+		DA9F1A9D1142B6E700BC260B /* heinzelliste.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = heinzelliste.txt; sourceTree = "<group>"; };
 		DAC7922B113A7E8F00B3C55F /* LogicTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LogicTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DAC7922C113A7E8F00B3C55F /* LogicTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "LogicTests-Info.plist"; sourceTree = "<group>"; };
 		DAC79233113A7EFA00B3C55F /* TranslationTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TranslationTest.h; path = unit_tests/TranslationTest.h; sourceTree = "<group>"; };
@@ -138,6 +145,8 @@
 				28216C960DB411BC00E5133A /* FirstViewController.m */,
 				1D3623240D0F684500981E51 /* HeinzelnisseAppDelegate.h */,
 				1D3623250D0F684500981E51 /* HeinzelnisseAppDelegate.m */,
+				DA9F1A991142B59B00BC260B /* Dataloader.h */,
+				DA9F1A9A1142B59B00BC260B /* Dataloader.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -184,6 +193,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				DA9F1A9D1142B6E700BC260B /* heinzelliste.txt */,
 				282CCBFD0DB6C98000C4EA27 /* SecondView.xib */,
 				DA9F18BB113A90E900BC260B /* FirstView.xib */,
 				28AD73870D9D96C1002E5188 /* MainWindow.xib */,
@@ -328,6 +338,7 @@
 				28AD73880D9D96C1002E5188 /* MainWindow.xib in Resources */,
 				282CCBFE0DB6C98000C4EA27 /* SecondView.xib in Resources */,
 				DA9F18D2113A91A000BC260B /* FirstView.xib in Resources */,
+				DA9F1A9F1142B6E700BC260B /* heinzelliste.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -345,6 +356,7 @@
 				DAC7930C113A88A200B3C55F /* HeinzelnisseTests.octest in Resources */,
 				DAC792E0113A882400B3C55F /* MainWindow.xib in Resources */,
 				DAC792E1113A882400B3C55F /* SecondView.xib in Resources */,
+				DA9F1A9E1142B6E700BC260B /* heinzelliste.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -397,6 +409,7 @@
 				28216C970DB411BC00E5133A /* FirstViewController.m in Sources */,
 				DA789ED011288100000F1A03 /* Heinzelnisse.xcdatamodel in Sources */,
 				DA789EDA1128824B000F1A03 /* Translation.m in Sources */,
+				DA9F1A9C1142B59B00BC260B /* Dataloader.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -418,6 +431,7 @@
 				DAC792E5113A882400B3C55F /* FirstViewController.m in Sources */,
 				DAC792E6113A882400B3C55F /* Heinzelnisse.xcdatamodel in Sources */,
 				DAC792E7113A882400B3C55F /* Translation.m in Sources */,
+				DA9F1A9B1142B59B00BC260B /* Dataloader.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

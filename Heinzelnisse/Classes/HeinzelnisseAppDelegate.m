@@ -22,6 +22,7 @@
 #import "HeinzelnisseAppDelegate.h"
 #import <Foundation/Foundation.h>
 #import "FirstViewController.h"
+#import "Dataloader.h"
 
 @implementation HeinzelnisseAppDelegate
 
@@ -29,9 +30,33 @@
 @synthesize tabBarController;
 
 - (void)applicationDidFinishLaunching:(UIApplication *)application {
+	NSFileManager *fileManager = [NSFileManager defaultManager];
+    NSError *error;
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0];
+    NSString *writableDBPath = [documentsDirectory stringByAppendingPathComponent:@"heinzelnisse.db"];
+	BOOL loadData=YES;
+    if(! [fileManager fileExistsAtPath:writableDBPath]) {
+		NSLog(@"DB File not found %@", error);
+		loadData = YES;
+	} else {
+		NSLog(@"DB File found %@", writableDBPath);
+		int filesize=[[fileManager attributesOfItemAtPath: writableDBPath error: &error] fileSize];
+		NSLog(@"File Size %d", filesize);
+		if (filesize < 10000) {
+			loadData = YES;
+		}
+	}
+	if (loadData) {
+		Dataloader *loader = [[Dataloader alloc] initWithManagedObjectContext:self.managedObjectContext];
+		[loader load];
+		[loader release];
+	}
+	
+	
     NSArray *viewControllers = tabBarController.viewControllers;
 	FirstViewController *firstView = (FirstViewController*) [viewControllers objectAtIndex:0];
-	firstView.managedObjectContext = managedObjectContext;
+	firstView.managedObjectContext = [self managedObjectContext];
     // Add the tab bar controller's current view as a subview of the window
     [window addSubview:tabBarController.view];
 }
@@ -41,8 +66,10 @@
 		return persistentStoreCoordinator;
 	}
 	
-	NSURL *storeUrl = [NSURL fileURLWithPath: [[self applicationDocumentsDirectory] 
-											   stringByAppendingFormat: @"heinzelnisse.db"]];
+	NSURL *storeUrl = [NSURL fileURLWithPath: 
+					   [[self applicationDocumentsDirectory]
+						stringByAppendingPathComponent: @"heinzelnisse.db"]];
+	
 
 	NSError *error = nil;
 	persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] 

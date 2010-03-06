@@ -18,4 +18,8 @@
 @dynamic wordDE;
 @dynamic wordNO;
 
+- (NSString*) description {
+	return [NSString stringWithFormat:@"WordDE: %@ WordNO: %@ ArticleDE: %@ ArticleNO %@ OtherDE %@ OtherNO %@", 
+			self.wordDE, self.wordNO, self.articleDE, self.articleNO, self.otherDE, self.otherNO];
+}
 @end

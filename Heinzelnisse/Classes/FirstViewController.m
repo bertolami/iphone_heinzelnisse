@@ -20,6 +20,12 @@
 //
 
 #import "FirstViewController.h"
+#import <stdlib.h>
+@interface FirstViewController (Private)
+
+- (NSString*) sortColumn;
+
+@end
 
 
 @implementation FirstViewController
@@ -27,14 +33,64 @@
 @synthesize fetchedResultsController;
 @synthesize managedObjectContext;
 
+- (void) viewDidLoad {
+	[super viewDidLoad];
+
+	NSError *error = nil;
+	if(![self.fetchedResultsController performFetch:&error]) {
+		NSLog(@"Error occurred %@", error);
+	}
+	self.title = @"Translations";
+}
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+	NSUInteger count = [[self.fetchedResultsController sections] count];
+    NSLog(@"numberOfSectionsInTableView %d", count);
+    
+	if (count == 0) {
+        count = 1;
+    }
+    return count;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    NSArray *sections = [self.fetchedResultsController sections];
+    NSUInteger count = 0;
+    if ([sections count]) {
+        id <NSFetchedResultsSectionInfo> sectionInfo = [sections objectAtIndex:section];
+        count = [sectionInfo numberOfObjects];
+    }
+    NSLog(@"numberOfRowsInSection %d", count);
+    
+	return count;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+	
+	static NSString *CellIdentifier = @"Cell";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+	if(cell == nil) {
+		cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier] autorelease];
+	}
+    Translation *translation = [self.fetchedResultsController objectAtIndexPath:indexPath];
+	cell.textLabel.text = translation.wordDE;
+	cell.detailTextLabel.text = translation.wordNO;
+ //   NSLog(@"cellForRowAtIndexPath %@ = %@",[indexPath description], cell.textLabel.text);
+	
+	return cell;
+}
+
 -(NSFetchedResultsController*) fetchedResultsController {
 	if(fetchedResultsController !=nil) {
 		return fetchedResultsController;
 	}
+	NSLog(@"Building Fetch Result Controller");
 	NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
 	NSEntityDescription *entity = [NSEntityDescription entityForName:@"Translation" 
 											  inManagedObjectContext:managedObjectContext];
 	[fetchRequest setEntity:entity];
+	NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey: [self sortColumn] ascending:YES];
+	[fetchRequest setSortDescriptors:[NSArray arrayWithObject:sortDescriptor]];
 	NSFetchedResultsController *aFetchedResultsController = [[NSFetchedResultsController alloc] 
 															 initWithFetchRequest:fetchRequest
 															 managedObjectContext:managedObjectContext 
@@ -43,9 +99,14 @@
 	aFetchedResultsController.delegate = self;
 	self.fetchedResultsController = aFetchedResultsController;
 	[aFetchedResultsController release];
-	
 	[fetchRequest release];
+	[sortDescriptor release];
+	
 	return fetchedResultsController;
+}
+	 
+- (NSString*) sortColumn {
+	return @"wordDE";
 }
 
 /*
