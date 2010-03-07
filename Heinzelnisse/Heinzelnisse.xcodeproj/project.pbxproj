@@ -15,6 +15,8 @@
 		282CCBFE0DB6C98000C4EA27 /* SecondView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 282CCBFD0DB6C98000C4EA27 /* SecondView.xib */; };
 		288765080DF74369002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765070DF74369002DB57D /* CoreGraphics.framework */; };
 		28AD73880D9D96C1002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD73870D9D96C1002E5188 /* MainWindow.xib */; };
+		DA003AFE1143EB8500C1300B /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = DA003AFD1143EB8500C1300B /* icon.png */; };
+		DA003AFF1143EB8500C1300B /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = DA003AFD1143EB8500C1300B /* icon.png */; };
 		DA789EB711287F78000F1A03 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA789EB611287F78000F1A03 /* CoreData.framework */; };
 		DA789ED011288100000F1A03 /* Heinzelnisse.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = DA789ECE11288100000F1A03 /* Heinzelnisse.xcdatamodel */; };
 		DA789EDA1128824B000F1A03 /* Translation.m in Sources */ = {isa = PBXBuildFile; fileRef = DA789ED81128824B000F1A03 /* Translation.m */; };
@@ -69,6 +71,7 @@
 		28AD73870D9D96C1002E5188 /* MainWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Heinzelnisse-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Heinzelnisse-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
+		DA003AFD1143EB8500C1300B /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
 		DA789EB611287F78000F1A03 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		DA789ECE11288100000F1A03 /* Heinzelnisse.xcdatamodel */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = wrapper.xcdatamodel; path = Heinzelnisse.xcdatamodel; sourceTree = "<group>"; };
 		DA789ED71128824B000F1A03 /* Translation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Translation.h; sourceTree = "<group>"; };
@@ -193,6 +196,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				DA003AFD1143EB8500C1300B /* icon.png */,
 				DA9F1A9D1142B6E700BC260B /* heinzelliste.txt */,
 				282CCBFD0DB6C98000C4EA27 /* SecondView.xib */,
 				DA9F18BB113A90E900BC260B /* FirstView.xib */,
@@ -339,6 +343,7 @@
 				282CCBFE0DB6C98000C4EA27 /* SecondView.xib in Resources */,
 				DA9F18D2113A91A000BC260B /* FirstView.xib in Resources */,
 				DA9F1A9F1142B6E700BC260B /* heinzelliste.txt in Resources */,
+				DA003AFF1143EB8500C1300B /* icon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -357,6 +362,7 @@
 				DAC792E0113A882400B3C55F /* MainWindow.xib in Resources */,
 				DAC792E1113A882400B3C55F /* SecondView.xib in Resources */,
 				DA9F1A9E1142B6E700BC260B /* heinzelliste.txt in Resources */,
+				DA003AFE1143EB8500C1300B /* icon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
