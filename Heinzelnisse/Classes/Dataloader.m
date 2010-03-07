@@ -36,23 +36,26 @@
 		NSLog(@"Heinzelliste text file not found %@", txtFile);
 		
 	} else {
-	//	[self deleteAllRecords];
+		[self deleteAllRecords];
 		NSLog(@"loading contents of %@", txtFile);
 		NSError *error;
 		NSString *contents = [NSString stringWithContentsOfFile:txtFile encoding: NSUTF8StringEncoding error: &error];
 		NSArray *arrayOfLines = [contents componentsSeparatedByString:@"\n"];
 		NSLog(@"done size: %d lines", [arrayOfLines count]);
-		for (int i=0 ;i< 10; i++) {
+		for (int i=0 ;i< [arrayOfLines count]; i++) {
 			NSString *line= [arrayOfLines objectAtIndex:i];
 			NSArray *columns = [line componentsSeparatedByString:@"\t"];
-			Translation *t = [NSEntityDescription insertNewObjectForEntityForName:@"Translation" inManagedObjectContext:managedObjectContext];
-			t.wordDE = [columns objectAtIndex:1];
-			t.articleDE = [columns objectAtIndex:2];
-			t.otherDE = [columns objectAtIndex:3];
-			t.wordNO = [columns objectAtIndex:4];
-			t.articleNO = [columns objectAtIndex:5];
-			NSLog(@"%d", i);
+			if([columns count] > 7) {
+				Translation *t = [NSEntityDescription insertNewObjectForEntityForName:@"Translation" inManagedObjectContext:managedObjectContext];
+				t.wordDE = [columns objectAtIndex:4];
+				t.articleDE = [columns objectAtIndex:5];
+				t.otherDE = [columns objectAtIndex:7];
+				t.wordNO = [columns objectAtIndex:0];
+				t.articleNO = [columns objectAtIndex:1];
+				t.otherNO = [columns objectAtIndex:3];
+			}
 		}
+		
 		[self saveContext];
 	}
 
@@ -70,12 +73,12 @@
 }
 
 - (void) saveContext{
-	
+	NSLog(@"saving context");
 	NSError *saveError;
-	[managedObjectContext save:&saveError];
-	if(saveError != nil){
-		NSLog(@"error occurred %@", saveError);
+	if(![managedObjectContext save:&saveError]) {
+		NSLog(@"error occurred %@", [saveError description]);
 	}
+	NSLog(@"done");
 }
 - (void) dealloc {
 	[managedObjectContext release];

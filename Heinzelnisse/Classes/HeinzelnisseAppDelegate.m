@@ -35,9 +35,9 @@
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *documentsDirectory = [paths objectAtIndex:0];
     NSString *writableDBPath = [documentsDirectory stringByAppendingPathComponent:@"heinzelnisse.db"];
-	BOOL loadData=YES;
+	BOOL loadData=NO;
     if(! [fileManager fileExistsAtPath:writableDBPath]) {
-		NSLog(@"DB File not found %@", error);
+		NSLog(@"DB File not found %@", writableDBPath);
 		loadData = YES;
 	} else {
 		NSLog(@"DB File found %@", writableDBPath);
