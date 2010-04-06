@@ -32,16 +32,39 @@
 
 @synthesize fetchedResultsController;
 @synthesize managedObjectContext;
+@synthesize searchBar;
+@synthesize tableView;
+@synthesize queryText;
 
 - (void) viewDidLoad {
 	[super viewDidLoad];
+	[searchBar setDelegate:self];
+	[self.tableView setDelegate: self];
+	self.title = @"Translations";
+}
 
+- (void)controllerWillChangeContent:(NSFetchedResultsController *)controller {
+	NSLog(@"controller will change content");
+    [self.tableView beginUpdates];
+}
+- (void)controllerDidChangeContent:(NSFetchedResultsController *)controller {
+	NSLog(@"controller did change content");
+    [self.tableView endUpdates];
+}
+
+
+- (void)searchBarSearchButtonClicked:(UISearchBar *)aSearchBar {
+	NSLog(@"Text searchButtonClicked: %@", aSearchBar.text);
+	self.fetchedResultsController = nil;
+	self.queryText = aSearchBar.text;
 	NSError *error = nil;
 	if(![self.fetchedResultsController performFetch:&error]) {
 		NSLog(@"Error occurred %@", error);
 	}
-	self.title = @"Translations";
+	[self.tableView reloadData];
+	
 }
+
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
 	NSUInteger count = [[self.fetchedResultsController sections] count];
@@ -65,10 +88,10 @@
 	return count;
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+- (UITableViewCell *)tableView:(UITableView *)aTableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 	
 	static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    UITableViewCell *cell = [aTableView dequeueReusableCellWithIdentifier:CellIdentifier];
 	if(cell == nil) {
 		cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier] autorelease];
 	}
@@ -89,6 +112,10 @@
 	NSEntityDescription *entity = [NSEntityDescription entityForName:@"Translation" 
 											  inManagedObjectContext:managedObjectContext];
 	[fetchRequest setEntity:entity];
+	NSPredicate *predicate = [NSPredicate predicateWithFormat:@"%K like %@", @"wordDE", self.queryText];
+	
+	[fetchRequest setPredicate:predicate];
+	NSLog(@"Fetch Request %@", fetchRequest);
 	NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey: [self sortColumn] ascending:YES];
 	[fetchRequest setSortDescriptors:[NSArray arrayWithObject:sortDescriptor]];
 	NSFetchedResultsController *aFetchedResultsController = [[NSFetchedResultsController alloc] 

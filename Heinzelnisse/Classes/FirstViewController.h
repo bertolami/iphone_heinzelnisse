@@ -22,11 +22,16 @@
 #import <UIKit/UIKit.h>
 #import <CoreData/CoreData.h>
 #import "Translation.h"
-@interface FirstViewController : UITableViewController {
+@interface FirstViewController : UIViewController <NSFetchedResultsControllerDelegate> {
+	UISearchBar *searchBar;
+	UITableView *tableView;
 	NSFetchedResultsController *fetchedResultsController;
 	NSManagedObjectContext *managedObjectContext;
+	NSString *queryText;
 }
-
+@property (nonatomic, retain) UISearchBar *searchBar;
+@property (nonatomic, retain) NSString *queryText;
+@property (nonatomic, retain) UITableView *tableView;
 @property (nonatomic, retain) NSFetchedResultsController *fetchedResultsController;
 @property (nonatomic, retain) NSManagedObjectContext *managedObjectContext;
 
