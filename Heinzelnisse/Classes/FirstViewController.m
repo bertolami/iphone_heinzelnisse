@@ -24,7 +24,7 @@
 @interface FirstViewController (Private)
 
 - (NSString*) sortColumn;
-
+- (NSUInteger) numberOfRowsInSection: (NSInteger) section;
 @end
 
 
@@ -38,8 +38,6 @@
 
 - (void) viewDidLoad {
 	[super viewDidLoad];
-	[searchBar setDelegate:self];
-	[self.tableView setDelegate: self];
 	self.title = @"Translations";
 }
 
@@ -61,8 +59,9 @@
 	if(![self.fetchedResultsController performFetch:&error]) {
 		NSLog(@"Error occurred %@", error);
 	}
+	NSLog(@"Result size ", [self numberOfRowsInSection:0]);
 	[self.tableView reloadData];
-	
+	[tableView setContentOffset:CGPointMake(0, 0) animated:NO];
 }
 
 
@@ -76,15 +75,19 @@
     return count;
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    NSArray *sections = [self.fetchedResultsController sections];
+- (NSUInteger) numberOfRowsInSection: (NSInteger) section  {
+	NSArray *sections = [self.fetchedResultsController sections];
     NSUInteger count = 0;
     if ([sections count]) {
         id <NSFetchedResultsSectionInfo> sectionInfo = [sections objectAtIndex:section];
         count = [sectionInfo numberOfObjects];
     }
-    NSLog(@"numberOfRowsInSection %d", count);
+	NSLog(@"numberOfRowsInSection %d", count);
     
+	return count;
+}
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    NSUInteger count = [self numberOfRowsInSection: section];
 	return count;
 }
 
@@ -112,7 +115,8 @@
 	NSEntityDescription *entity = [NSEntityDescription entityForName:@"Translation" 
 											  inManagedObjectContext:managedObjectContext];
 	[fetchRequest setEntity:entity];
-	NSPredicate *predicate = [NSPredicate predicateWithFormat:@"%K like %@", @"wordDE", self.queryText];
+	NSString *pattern = [[queryText stringByAppendingString:@"*"] stringByAppendingString:@"*"];
+	NSPredicate *predicate = [NSPredicate predicateWithFormat:@"%K like[cd] %@", @"wordDE", pattern];
 	
 	[fetchRequest setPredicate:predicate];
 	NSLog(@"Fetch Request %@", fetchRequest);
