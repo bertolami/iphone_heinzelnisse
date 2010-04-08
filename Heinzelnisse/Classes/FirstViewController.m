@@ -25,6 +25,8 @@
 
 - (NSString*) sortColumn;
 - (NSUInteger) numberOfRowsInSection: (NSInteger) section;
+- (BOOL) isDE_NO;
+- (void) executeSearch;
 @end
 
 
@@ -50,11 +52,18 @@
     [self.tableView endUpdates];
 }
 
-
+- (void)searchBar:(UISearchBar *)searchBar selectedScopeButtonIndexDidChange:(NSInteger)selectedScope {
+	NSLog(@"selectedScopeButtonIndexDidChange");
+	[self executeSearch];
+}
 - (void)searchBarSearchButtonClicked:(UISearchBar *)aSearchBar {
-	NSLog(@"Text searchButtonClicked: %@", aSearchBar.text);
+	NSLog(@"searchButtonClicked");
+	[self executeSearch];
+}
+
+- (void) executeSearch {
 	self.fetchedResultsController = nil;
-	self.queryText = aSearchBar.text;
+	self.queryText = self.searchBar.text;
 	NSError *error = nil;
 	if(![self.fetchedResultsController performFetch:&error]) {
 		NSLog(@"Error occurred %@", error);
@@ -63,7 +72,6 @@
 	[self.tableView reloadData];
 	[tableView setContentOffset:CGPointMake(0, 0) animated:NO];
 }
-
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
 	NSUInteger count = [[self.fetchedResultsController sections] count];
@@ -99,10 +107,8 @@
 		cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier] autorelease];
 	}
     Translation *translation = [self.fetchedResultsController objectAtIndexPath:indexPath];
-	cell.textLabel.text = translation.wordDE;
-	cell.detailTextLabel.text = translation.wordNO;
- //   NSLog(@"cellForRowAtIndexPath %@ = %@",[indexPath description], cell.textLabel.text);
-	
+	cell.textLabel.text = [self isDE_NO] ? translation.wordDE : translation.wordNO;
+	cell.detailTextLabel.text = [self isDE_NO] ? translation.wordNO : translation.wordDE;		
 	return cell;
 }
 
@@ -116,7 +122,8 @@
 											  inManagedObjectContext:managedObjectContext];
 	[fetchRequest setEntity:entity];
 	NSString *pattern = [[queryText stringByAppendingString:@"*"] stringByAppendingString:@"*"];
-	NSPredicate *predicate = [NSPredicate predicateWithFormat:@"%K like[cd] %@", @"wordDE", pattern];
+	
+	NSPredicate *predicate = [NSPredicate predicateWithFormat:@"%K like[cd] %@", [self sortColumn], pattern];
 	
 	[fetchRequest setPredicate:predicate];
 	NSLog(@"Fetch Request %@", fetchRequest);
@@ -137,41 +144,13 @@
 }
 	 
 - (NSString*) sortColumn {
-	return @"wordDE";
+	return [self isDE_NO] ? @"wordDE" : @"wordNO";
+	
 }
-
-/*
-// The designated initializer. Override to perform setup that is required before the view is loaded.
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
-    if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
-        // Custom initialization
-    }
-    return self;
+- (BOOL) isDE_NO {
+	return searchBar.selectedScopeButtonIndex == 0;
 }
-*/
-
-/*
-// Implement loadView to create a view hierarchy programmatically, without using a nib.
-- (void)loadView {
-}
-*/
-
-/*
-// Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
-- (void)viewDidLoad {
-    [super viewDidLoad];
-}
-*/
-
-/*
-// Override to allow orientations other than the default portrait orientation.
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
-    // Return YES for supported orientations
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
-}
-*/
-
-- (void)didReceiveMemoryWarning {
+ - (void)didReceiveMemoryWarning {
 	// Releases the view if it doesn't have a superview.
     [super didReceiveMemoryWarning];
 	

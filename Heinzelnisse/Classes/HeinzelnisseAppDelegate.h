@@ -21,6 +21,7 @@
 
 #import <UIKit/UIKit.h>
 #import <CoreData/CoreData.h>
+#import "FirstViewController.h"
 
 @interface HeinzelnisseAppDelegate : NSObject <UIApplicationDelegate, UITabBarControllerDelegate> {
     
@@ -29,7 +30,7 @@
 	NSPersistentStoreCoordinator *persistentStoreCoordinator;
 	
 	UIWindow *window;
-    UITabBarController *tabBarController;
+    IBOutlet FirstViewController *viewController;
 }
 
 @property(nonatomic, retain, readonly) NSManagedObjectModel *managedObjectModel;
@@ -38,6 +39,6 @@
 @property(nonatomic, readonly) NSString *applicationDocumentsDirectory;
 
 @property (nonatomic, retain) IBOutlet UIWindow *window;
-@property (nonatomic, retain) IBOutlet UITabBarController *tabBarController;
+@property (nonatomic, retain) IBOutlet FirstViewController *viewController;
 
 @end

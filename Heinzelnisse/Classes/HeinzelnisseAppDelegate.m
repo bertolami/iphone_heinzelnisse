@@ -27,7 +27,7 @@
 @implementation HeinzelnisseAppDelegate
 
 @synthesize window;
-@synthesize tabBarController;
+@synthesize viewController;
 
 - (void)applicationDidFinishLaunching:(UIApplication *)application {
 	NSFileManager *fileManager = [NSFileManager defaultManager];
@@ -53,12 +53,11 @@
 		[loader release];
 	}
 	
+	self.viewController.managedObjectContext = [self managedObjectContext];
+    NSLog(@"Add the controller's current view %@ as a subview of the window %@", self.viewController.view, window);
+	[window addSubview: self.viewController.view];
+	NSLog(@"done");
 	
-    NSArray *viewControllers = tabBarController.viewControllers;
-	FirstViewController *firstView = (FirstViewController*) [viewControllers objectAtIndex:0];
-	firstView.managedObjectContext = [self managedObjectContext];
-    // Add the tab bar controller's current view as a subview of the window
-    [window addSubview:tabBarController.view];
 }
 
 - (NSPersistentStoreCoordinator*) persistentStoreCoordinator {
@@ -133,7 +132,7 @@
 	[managedObjectModel release];
 	[managedObjectContext release];
 	
-    [tabBarController release];
+    [viewController release];
     [window release];
     [super dealloc];
 }
