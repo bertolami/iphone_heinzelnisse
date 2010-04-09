@@ -37,6 +37,7 @@
 @synthesize searchBar;
 @synthesize tableView;
 @synthesize queryText;
+@synthesize translationDetailViewController;
 
 - (void) viewDidLoad {
 	[super viewDidLoad];
@@ -72,6 +73,20 @@
 	[self.tableView reloadData];
 	[tableView setContentOffset:CGPointMake(0, 0) animated:NO];
 }
+
+// Override to support row selection in the table view.
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+	Translation *translation = [self.fetchedResultsController objectAtIndexPath:indexPath];
+	NSLog(@"Selected %@", translation);
+	if([self isDE_NO]) {
+		[self.translationDetailViewController setDE_NOTranslation:translation];
+	} else {
+		[self.translationDetailViewController setNO_DETranslation:translation];	
+	}
+	[self.navigationController pushViewController:self.translationDetailViewController animated:YES];
+
+}
+
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
 	NSUInteger count = [[self.fetchedResultsController sections] count];

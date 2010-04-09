@@ -22,9 +22,13 @@
 #import <UIKit/UIKit.h>
 #import <CoreData/CoreData.h>
 #import "Translation.h"
+#import "TranslationDetailViewController.h"
+
 @interface FirstViewController : UIViewController <NSFetchedResultsControllerDelegate> {
 	IBOutlet UISearchBar *searchBar;
 	IBOutlet UITableView *tableView;
+	IBOutlet TranslationDetailViewController *translationDetailViewController;
+	
 	NSFetchedResultsController *fetchedResultsController;
 	NSManagedObjectContext *managedObjectContext;
 	NSString *queryText;
@@ -32,6 +36,7 @@
 @property (nonatomic, retain) IBOutlet UISearchBar *searchBar;
 @property (nonatomic, retain) NSString *queryText;
 @property (nonatomic, retain) IBOutlet UITableView *tableView;
+@property(nonatomic, retain) IBOutlet TranslationDetailViewController *translationDetailViewController;
 @property (nonatomic, retain) NSFetchedResultsController *fetchedResultsController;
 @property (nonatomic, retain) NSManagedObjectContext *managedObjectContext;
 
