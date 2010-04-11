@@ -29,24 +29,30 @@
 @synthesize translatedArticle;
 @synthesize translatedOther;
 
+
 - (IBAction) back {
 	[self.navigationController popViewControllerAnimated:YES];
 }
 
 
 - (void) setDE_NOTranslation:(Translation*) aTranslation {
+	NSLog(@"setting DE NO Translation");
 	originalWord.text = aTranslation.wordDE;
 	translatedWord.text = aTranslation.wordNO;
 	translatedArticle.text = aTranslation.articleNO;
 	translatedOther.text = aTranslation.otherNO;
+	[self.view setNeedsLayout];
 	
 }
 
 - (void) setNO_DETranslation:(Translation*) aTranslation {
+	NSLog(@"setting NO DE Translation");
 	originalWord.text = aTranslation.wordNO;
 	translatedWord.text = aTranslation.wordDE;
 	translatedArticle.text = aTranslation.articleDE;
 	translatedOther.text = aTranslation.otherDE;
+	[self.view setNeedsDisplay];
+
 }
 
 

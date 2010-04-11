@@ -31,6 +31,7 @@
 	
 	UIWindow *window;
     IBOutlet FirstViewController *viewController;
+	IBOutlet UINavigationController *navigationController;
 }
 
 @property(nonatomic, retain, readonly) NSManagedObjectModel *managedObjectModel;
@@ -40,5 +41,6 @@
 
 @property (nonatomic, retain) IBOutlet UIWindow *window;
 @property (nonatomic, retain) IBOutlet FirstViewController *viewController;
+@property (nonatomic, retain) IBOutlet UINavigationController *navigationController;
 
 @end

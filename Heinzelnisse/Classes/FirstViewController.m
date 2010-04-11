@@ -41,7 +41,7 @@
 
 - (void) viewDidLoad {
 	[super viewDidLoad];
-	self.title = @"Translations";
+	[searchBar becomeFirstResponder];
 }
 
 - (void)controllerWillChangeContent:(NSFetchedResultsController *)controller {
@@ -77,12 +77,13 @@
 // Override to support row selection in the table view.
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	Translation *translation = [self.fetchedResultsController objectAtIndexPath:indexPath];
-	NSLog(@"Selected %@", translation);
+	NSLog(@"Selected %@ adding to controller %@", translation, self.translationDetailViewController);
 	if([self isDE_NO]) {
 		[self.translationDetailViewController setDE_NOTranslation:translation];
 	} else {
 		[self.translationDetailViewController setNO_DETranslation:translation];	
 	}
+	
 	[self.navigationController pushViewController:self.translationDetailViewController animated:YES];
 
 }

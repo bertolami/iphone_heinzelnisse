@@ -28,6 +28,7 @@
 
 @synthesize window;
 @synthesize viewController;
+@synthesize navigationController;
 
 - (void)applicationDidFinishLaunching:(UIApplication *)application {
 	NSFileManager *fileManager = [NSFileManager defaultManager];
@@ -54,8 +55,8 @@
 	}
 	
 	self.viewController.managedObjectContext = [self managedObjectContext];
-    NSLog(@"Add the controller's current view %@ as a subview of the window %@", self.viewController.view, window);
-	[window addSubview: self.viewController.view];
+    NSLog(@"Add the controller's current view %@ as a subview of the window %@", self.navigationController.view, window);
+	[window addSubview: self.navigationController.view];
 	NSLog(@"done");
 	
 }
@@ -131,8 +132,8 @@
 	[persistentStoreCoordinator release];
 	[managedObjectModel release];
 	[managedObjectContext release];
-	
     [viewController release];
+	[navigationController release];
     [window release];
     [super dealloc];
 }
