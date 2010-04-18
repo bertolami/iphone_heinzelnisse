@@ -116,7 +116,7 @@
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<object class="IBUINavigationItem" id="454009224">
 								<reference key="IBUINavigationBar" ref="742702604"/>
-								<string key="IBUITitle">Title</string>
+								<string key="IBUITitle"/>
 								<object class="IBUIBarButtonItem" key="IBUILeftBarButtonItem" id="467164458">
 									<string key="IBUITitle">Back</string>
 									<int key="IBUIStyle">1</int>
@@ -199,11 +199,11 @@
 						<reference key="object" ref="191373211"/>
 						<object class="NSMutableArray" key="children">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<reference ref="742702604"/>
 							<reference ref="986157"/>
 							<reference ref="369944945"/>
 							<reference ref="317665659"/>
 							<reference ref="768463249"/>
+							<reference ref="742702604"/>
 						</object>
 						<reference key="parent" ref="0"/>
 					</object>
