@@ -26,12 +26,16 @@
 	IBOutlet UILabel *translatedWord;
 	IBOutlet UILabel *translatedArticle;
 	IBOutlet UILabel *translatedOther;
+	Translation *translation;
+	NSString *translationDirection;
 }
 
 @property(nonatomic, retain) IBOutlet UILabel *originalWord;
 @property(nonatomic, retain) IBOutlet UILabel *translatedWord;
 @property(nonatomic, retain) IBOutlet UILabel *translatedArticle;
 @property(nonatomic, retain) IBOutlet UILabel *translatedOther;
+@property(nonatomic, retain) Translation *translation;
+@property(nonatomic, retain) NSString *translationDirection;
 
 - (IBAction) back;
 - (void) setDE_NOTranslation:(Translation*) aTranslation;

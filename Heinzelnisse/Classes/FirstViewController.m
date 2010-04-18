@@ -27,6 +27,8 @@
 - (NSUInteger) numberOfRowsInSection: (NSInteger) section;
 - (BOOL) isDE_NO;
 - (void) executeSearch;
+- (NSString*) stringWithDETranslation: (Translation*) aTranslation;
+- (NSString*) stringWithNOTranslation: (Translation*) aTranslation;
 @end
 
 
@@ -69,6 +71,7 @@
 	if(![self.fetchedResultsController performFetch:&error]) {
 		NSLog(@"Error occurred %@", error);
 	}
+	[searchBar resignFirstResponder];
 	NSLog(@"Result size ", [self numberOfRowsInSection:0]);
 	[self.tableView reloadData];
 	[tableView setContentOffset:CGPointMake(0, 0) animated:NO];
@@ -123,9 +126,17 @@
 		cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier] autorelease];
 	}
     Translation *translation = [self.fetchedResultsController objectAtIndexPath:indexPath];
-	cell.textLabel.text = [self isDE_NO] ? translation.wordDE : translation.wordNO;
-	cell.detailTextLabel.text = [self isDE_NO] ? translation.wordNO : translation.wordDE;		
+	cell.textLabel.text = [self isDE_NO] ? [self stringWithDETranslation: translation] : [self stringWithNOTranslation:translation];
+	cell.detailTextLabel.text = [self isDE_NO] ? [self stringWithNOTranslation: translation] : [self stringWithDETranslation:translation];		
 	return cell;
+}
+
+- (NSString*) stringWithDETranslation: (Translation*) translation{
+	return [NSString stringWithFormat:@"%@ (%@)", translation.wordDE, translation.articleDE];
+}
+
+- (NSString*) stringWithNOTranslation: (Translation*) translation{
+	return [NSString stringWithFormat:@"%@ (%@)", translation.wordNO, translation.articleNO];
 }
 
 -(NSFetchedResultsController*) fetchedResultsController {

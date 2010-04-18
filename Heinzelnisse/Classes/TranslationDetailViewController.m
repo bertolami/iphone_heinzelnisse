@@ -22,37 +22,58 @@
 #import "Translation.h"
 
 
+@interface TranslationDetailViewController (Private)
+- (void) applyDE_NOTranslation;
+- (void) applyNO_DETranslation;
+@end
+
+
 @implementation TranslationDetailViewController
+
 
 @synthesize originalWord;
 @synthesize translatedWord;
 @synthesize translatedArticle;
 @synthesize translatedOther;
+@synthesize translation;
+@synthesize translationDirection;
 
+- (void)viewWillAppear:(BOOL)animated {
+	[super viewWillAppear:animated];
+	if([self.translationDirection isEqual:@"DE_NO"]) {
+		[self applyDE_NOTranslation];
+	} else {
+		[self applyNO_DETranslation];
+	}	
+}
 
 - (IBAction) back {
 	[self.navigationController popViewControllerAnimated:YES];
 }
 
 
-- (void) setDE_NOTranslation:(Translation*) aTranslation {
-	NSLog(@"setting DE NO Translation");
-	originalWord.text = aTranslation.wordDE;
-	translatedWord.text = aTranslation.wordNO;
-	translatedArticle.text = aTranslation.articleNO;
-	translatedOther.text = aTranslation.otherNO;
-	[self.view setNeedsLayout];
-	
+- (void) setDE_NOTranslation:(Translation*) aTranslation {		
+	self.translation = aTranslation;
+	self.translationDirection = @"DE_NO";
 }
 
+- (void) applyDE_NOTranslation {
+	originalWord.text = translation.wordDE;
+	translatedWord.text = translation.wordNO;
+	translatedArticle.text = translation.articleNO;
+	translatedOther.text = translation.otherNO;
+	
+}
 - (void) setNO_DETranslation:(Translation*) aTranslation {
-	NSLog(@"setting NO DE Translation");
-	originalWord.text = aTranslation.wordNO;
-	translatedWord.text = aTranslation.wordDE;
-	translatedArticle.text = aTranslation.articleDE;
-	translatedOther.text = aTranslation.otherDE;
-	[self.view setNeedsDisplay];
+	self.translation = aTranslation;
+	self.translationDirection = @"NO_DE";
+}
 
+- (void) applyNO_DETranslation {
+	originalWord.text = translation.wordNO;
+	translatedWord.text = translation.wordDE;
+	translatedArticle.text = translation.articleDE;
+	translatedOther.text = translation.otherDE;
 }
 
 
@@ -60,6 +81,12 @@
 
 
 - (void)dealloc {
+	[translatedWord dealloc];
+	[translatedArticle dealloc];
+	[translatedOther dealloc];
+	[originalWord dealloc];
+	[translation dealloc];
+	[translationDirection dealloc];
     [super dealloc];
 }
 
