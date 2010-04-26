@@ -132,11 +132,21 @@
 }
 
 - (NSString*) stringWithDETranslation: (Translation*) translation{
-	return [NSString stringWithFormat:@"%@ (%@)", translation.wordDE, translation.articleDE];
+	if([translation.articleDE length] > 0) {
+		return [NSString stringWithFormat:@"%@ (%@)", translation.wordDE, translation.articleDE];		
+	} else {
+		return translation.wordDE;
+	}
+
 }
 
 - (NSString*) stringWithNOTranslation: (Translation*) translation{
-	return [NSString stringWithFormat:@"%@ (%@)", translation.wordNO, translation.articleNO];
+	if([translation.articleNO length] > 0) {
+		return [NSString stringWithFormat:@"%@ (%@)", translation.wordNO, translation.articleNO];
+	} else {
+		return translation.wordNO;
+	}
+
 }
 
 -(NSFetchedResultsController*) fetchedResultsController {

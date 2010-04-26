@@ -44,7 +44,7 @@
 		NSLog(@"DB File found %@", writableDBPath);
 		int filesize=[[fileManager attributesOfItemAtPath: writableDBPath error: &error] fileSize];
 		NSLog(@"File Size %d", filesize);
-		if (filesize < 10000) {
+		if (filesize < 1000000) {
 			loadData = YES;
 		}
 	}

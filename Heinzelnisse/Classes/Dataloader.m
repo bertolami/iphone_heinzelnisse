@@ -62,9 +62,11 @@
 				Translation *t = [NSEntityDescription insertNewObjectForEntityForName:@"Translation" inManagedObjectContext:managedObjectContext];
 				t.wordDE = [columns objectAtIndex:4];
 				t.articleDE = [columns objectAtIndex:5];
+				t.relatedDE = [[[columns objectAtIndex:6] componentsSeparatedByString:@";"] componentsJoinedByString:@", "];
 				t.otherDE = [columns objectAtIndex:7];
 				t.wordNO = [columns objectAtIndex:0];
 				t.articleNO = [columns objectAtIndex:1];
+				t.relatedNO = [[[columns objectAtIndex:2] componentsSeparatedByString:@";"] componentsJoinedByString:@", "];
 				t.otherNO = [columns objectAtIndex:3];
 			}
 		}

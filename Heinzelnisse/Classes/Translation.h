@@ -32,7 +32,8 @@
 @property (nonatomic, retain) NSString * otherDE;
 @property (nonatomic, retain) NSString * wordDE;
 @property (nonatomic, retain) NSString * wordNO;
-
+@property (nonatomic, retain) NSString * relatedDE;
+@property (nonatomic, retain) NSString * relatedNO;
 @end
 
 

@@ -22,18 +22,26 @@
 #import "Translation.h"
 
 @interface TranslationDetailViewController : UIViewController {
-	IBOutlet UILabel *originalWord;
-	IBOutlet UILabel *translatedWord;
-	IBOutlet UILabel *translatedArticle;
-	IBOutlet UILabel *translatedOther;
+	IBOutlet UILabel *wordDE;
+	IBOutlet UILabel *articleDE;
+	IBOutlet UILabel *otherDE;
+	IBOutlet UILabel *relatedDE;
+	IBOutlet UILabel *wordNO;
+	IBOutlet UILabel *articleNO;
+	IBOutlet UILabel *otherNO;
+	IBOutlet UILabel *relatedNO;
 	Translation *translation;
 	NSString *translationDirection;
 }
 
-@property(nonatomic, retain) IBOutlet UILabel *originalWord;
-@property(nonatomic, retain) IBOutlet UILabel *translatedWord;
-@property(nonatomic, retain) IBOutlet UILabel *translatedArticle;
-@property(nonatomic, retain) IBOutlet UILabel *translatedOther;
+@property(nonatomic, retain) IBOutlet UILabel *wordDE;
+@property(nonatomic, retain) IBOutlet UILabel *articleDE;
+@property(nonatomic, retain) IBOutlet UILabel *otherDE;
+@property(nonatomic, retain) IBOutlet UILabel *relatedDE;
+@property(nonatomic, retain) IBOutlet UILabel *wordNO;
+@property(nonatomic, retain) IBOutlet UILabel *articleNO;
+@property(nonatomic, retain) IBOutlet UILabel *otherNO;
+@property(nonatomic, retain) IBOutlet UILabel *relatedNO;
 @property(nonatomic, retain) Translation *translation;
 @property(nonatomic, retain) NSString *translationDirection;
 

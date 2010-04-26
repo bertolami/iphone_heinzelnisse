@@ -23,28 +23,28 @@
 
 
 @interface TranslationDetailViewController (Private)
-- (void) applyDE_NOTranslation;
-- (void) applyNO_DETranslation;
+- (void) applyTranslation;
 @end
 
 
 @implementation TranslationDetailViewController
 
-
-@synthesize originalWord;
-@synthesize translatedWord;
-@synthesize translatedArticle;
-@synthesize translatedOther;
-@synthesize translation;
 @synthesize translationDirection;
+@synthesize translation;
+@synthesize wordDE;
+@synthesize articleDE;
+@synthesize otherDE;
+@synthesize relatedDE;
+@synthesize wordNO;
+@synthesize articleNO;
+@synthesize otherNO;
+@synthesize relatedNO;
+
 
 - (void)viewWillAppear:(BOOL)animated {
 	[super viewWillAppear:animated];
-	if([self.translationDirection isEqual:@"DE_NO"]) {
-		[self applyDE_NOTranslation];
-	} else {
-		[self applyNO_DETranslation];
-	}	
+	[self applyTranslation];
+	
 }
 
 - (IBAction) back {
@@ -57,34 +57,43 @@
 	self.translationDirection = @"DE_NO";
 }
 
-- (void) applyDE_NOTranslation {
-	originalWord.text = translation.wordDE;
-	translatedWord.text = translation.wordNO;
-	translatedArticle.text = translation.articleNO;
-	translatedOther.text = translation.otherNO;
+- (void) applyTranslation {
+	wordDE.text = translation.wordDE;
+	if([translation.articleDE length] >0) {
+		articleDE.text = [NSString stringWithFormat:@"(%@)",translation.articleDE];
+	} else {
+		articleDE.text = @"";
+	}
+
+	otherDE.text = translation.otherDE;
+	relatedDE.text = translation.relatedDE;
+	wordNO.text = translation.wordNO;
+	if([translation.articleNO length] >0) {
+		articleNO.text = [NSString  stringWithFormat:@"(%@)",translation.articleNO];
+	} else {
+		articleNO.text = @"";
+	}
+
+	otherNO.text = translation.otherNO;
+	relatedNO.text = translation.relatedNO;
 	
 }
 - (void) setNO_DETranslation:(Translation*) aTranslation {
 	self.translation = aTranslation;
 	self.translationDirection = @"NO_DE";
 }
-
-- (void) applyNO_DETranslation {
-	originalWord.text = translation.wordNO;
-	translatedWord.text = translation.wordDE;
-	translatedArticle.text = translation.articleDE;
-	translatedOther.text = translation.otherDE;
-}
-
-
  
 
 
 - (void)dealloc {
-	[translatedWord dealloc];
-	[translatedArticle dealloc];
-	[translatedOther dealloc];
-	[originalWord dealloc];
+	[wordDE dealloc];
+	[articleDE dealloc];
+	[otherDE dealloc];
+	[relatedDE dealloc];
+	[wordNO dealloc];
+	[articleNO dealloc];
+	[otherNO dealloc];
+	[relatedNO dealloc];
 	[translation dealloc];
 	[translationDirection dealloc];
     [super dealloc];
