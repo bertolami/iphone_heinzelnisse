@@ -52,6 +52,10 @@
 }
 
 
+- (IBAction)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+	NSLog(@"touches began %@", event);
+}
+
 - (void) setDE_NOTranslation:(Translation*) aTranslation {		
 	self.translation = aTranslation;
 	self.translationDirection = @"DE_NO";

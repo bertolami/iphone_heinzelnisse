@@ -25,11 +25,11 @@
 	IBOutlet UILabel *wordDE;
 	IBOutlet UILabel *articleDE;
 	IBOutlet UILabel *otherDE;
-	IBOutlet UILabel *relatedDE;
+	IBOutlet UITextField *relatedDE;
 	IBOutlet UILabel *wordNO;
 	IBOutlet UILabel *articleNO;
 	IBOutlet UILabel *otherNO;
-	IBOutlet UILabel *relatedNO;
+	IBOutlet UITextField *relatedNO;
 	Translation *translation;
 	NSString *translationDirection;
 }
@@ -37,15 +37,16 @@
 @property(nonatomic, retain) IBOutlet UILabel *wordDE;
 @property(nonatomic, retain) IBOutlet UILabel *articleDE;
 @property(nonatomic, retain) IBOutlet UILabel *otherDE;
-@property(nonatomic, retain) IBOutlet UILabel *relatedDE;
+@property(nonatomic, retain) IBOutlet UITextField *relatedDE;
 @property(nonatomic, retain) IBOutlet UILabel *wordNO;
 @property(nonatomic, retain) IBOutlet UILabel *articleNO;
 @property(nonatomic, retain) IBOutlet UILabel *otherNO;
-@property(nonatomic, retain) IBOutlet UILabel *relatedNO;
+@property(nonatomic, retain) IBOutlet UITextField *relatedNO;
 @property(nonatomic, retain) Translation *translation;
 @property(nonatomic, retain) NSString *translationDirection;
 
 - (IBAction) back;
+- (IBAction)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event;
 - (void) setDE_NOTranslation:(Translation*) aTranslation;
 - (void) setNO_DETranslation:(Translation*) aTranslation;
 @end
