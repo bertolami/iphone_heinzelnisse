@@ -24,6 +24,8 @@
 
 @interface TranslationDetailViewController (Private)
 - (void) applyTranslation;
+- (NSString*) buildText:(NSString*) originalText defaultText: (NSString*) defaultText;
+- (NSString*) buildText:(NSString*) originalText originalFormat: originalFormat defaultText: (NSString*) defaultText;
 @end
 
 
@@ -63,25 +65,30 @@
 
 - (void) applyTranslation {
 	wordDE.text = translation.wordDE;
-	if([translation.articleDE length] >0) {
-		articleDE.text = [NSString stringWithFormat:@"(%@)",translation.articleDE];
-	} else {
-		articleDE.text = @"";
-	}
-
-	otherDE.text = translation.otherDE;
-	relatedDE.text = translation.relatedDE;
+	articleDE.text = [self buildText:translation.articleDE originalFormat: @"(%@)" defaultText:@""];
+	otherDE.text = [self buildText: translation.otherDE defaultText: @""];
+	relatedDE.text = [self buildText: translation.relatedDE defaultText: @"-"];
 	wordNO.text = translation.wordNO;
-	if([translation.articleNO length] >0) {
-		articleNO.text = [NSString  stringWithFormat:@"(%@)",translation.articleNO];
-	} else {
-		articleNO.text = @"";
-	}
-
-	otherNO.text = translation.otherNO;
-	relatedNO.text = translation.relatedNO;
+	articleNO.text = [self buildText:translation.articleNO originalFormat: @"(%@)" defaultText:@""];
+	otherNO.text = [self buildText: translation.otherNO  defaultText: @""];
+	relatedNO.text = [self buildText: translation.relatedNO defaultText: @"-"];
 	
 }
+
+- (NSString*) buildText:(NSString*) originalText defaultText: (NSString*) defaultText {
+	if([originalText length] > 0) {
+		return originalText;
+	} 
+	return [self buildText:originalText originalFormat: @"%@" defaultText:defaultText];
+} 
+
+- (NSString*) buildText:(NSString*) originalText originalFormat: originalFormat defaultText: (NSString*) defaultText {
+	if([originalText length] > 0) {
+		return [NSString  stringWithFormat:originalFormat,originalText];
+	} 
+	return defaultText;
+} 
+
 - (void) setNO_DETranslation:(Translation*) aTranslation {
 	self.translation = aTranslation;
 	self.translationDirection = @"NO_DE";
