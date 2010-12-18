@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 45;
+	objectVersion = 46;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -41,15 +41,25 @@
 		DAC792EC113A882400B3C55F /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = DAFC037911216F0F00F33DF5 /* libsqlite3.dylib */; };
 		DAC792ED113A882400B3C55F /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA789EB611287F78000F1A03 /* CoreData.framework */; };
 		DAC7930C113A88A200B3C55F /* HeinzelnisseTests.octest in Resources */ = {isa = PBXBuildFile; fileRef = DAC79301113A886100B3C55F /* HeinzelnisseTests.octest */; };
-		DAC79313113A88E000B3C55F /* FetchTranslationsTest.m in Sources */ = {isa = PBXBuildFile; fileRef = DAC79312113A88E000B3C55F /* FetchTranslationsTest.m */; };
 		DAD144D3116FB27300F2EDD6 /* TranslationDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DAD144D1116FB27300F2EDD6 /* TranslationDetailViewController.m */; };
 		DAD144D4116FB27300F2EDD6 /* TranslationDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DAD144D2116FB27300F2EDD6 /* TranslationDetailView.xib */; };
 		DAD144D5116FB27300F2EDD6 /* TranslationDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DAD144D1116FB27300F2EDD6 /* TranslationDetailViewController.m */; };
 		DAD144D6116FB27300F2EDD6 /* TranslationDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DAD144D2116FB27300F2EDD6 /* TranslationDetailView.xib */; };
+		DADB563D12BD1B9C00EB50D2 /* Germany.png in Resources */ = {isa = PBXBuildFile; fileRef = DADB563C12BD1B9C00EB50D2 /* Germany.png */; };
+		DADB563E12BD1B9C00EB50D2 /* Germany.png in Resources */ = {isa = PBXBuildFile; fileRef = DADB563C12BD1B9C00EB50D2 /* Germany.png */; };
+		DADB564012BD1BA100EB50D2 /* Norway.png in Resources */ = {isa = PBXBuildFile; fileRef = DADB563F12BD1BA100EB50D2 /* Norway.png */; };
+		DADB564112BD1BA100EB50D2 /* Norway.png in Resources */ = {isa = PBXBuildFile; fileRef = DADB563F12BD1BA100EB50D2 /* Norway.png */; };
 		DAFC037A11216F0F00F33DF5 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = DAFC037911216F0F00F33DF5 /* libsqlite3.dylib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		DA9866BB12B80BC7004A7111 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = DAC7922A113A7E8F00B3C55F;
+			remoteInfo = LogicTests;
+		};
 		DAC79306113A888000B3C55F /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
@@ -88,11 +98,11 @@
 		DAC792F1113A882400B3C55F /* Heinzelnisse.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Heinzelnisse.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DAC79301113A886100B3C55F /* HeinzelnisseTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HeinzelnisseTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DAC79302113A886100B3C55F /* HeinzelnisseTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "HeinzelnisseTests-Info.plist"; sourceTree = "<group>"; };
-		DAC79311113A88E000B3C55F /* FetchTranslationsTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FetchTranslationsTest.h; path = unit_tests/FetchTranslationsTest.h; sourceTree = "<group>"; };
-		DAC79312113A88E000B3C55F /* FetchTranslationsTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FetchTranslationsTest.m; path = unit_tests/FetchTranslationsTest.m; sourceTree = "<group>"; };
 		DAD144D0116FB27300F2EDD6 /* TranslationDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TranslationDetailViewController.h; sourceTree = "<group>"; };
 		DAD144D1116FB27300F2EDD6 /* TranslationDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TranslationDetailViewController.m; sourceTree = "<group>"; };
 		DAD144D2116FB27300F2EDD6 /* TranslationDetailView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = TranslationDetailView.xib; path = Classes/TranslationDetailView.xib; sourceTree = "<group>"; };
+		DADB563C12BD1B9C00EB50D2 /* Germany.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Germany.png; path = ../../../../Desktop/Germany.png; sourceTree = SOURCE_ROOT; };
+		DADB563F12BD1BA100EB50D2 /* Norway.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Norway.png; path = ../../../../Desktop/Norway.png; sourceTree = SOURCE_ROOT; };
 		DAFC037911216F0F00F33DF5 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		DAFC039E1126E2A700F33DF5 /* DBAccessTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DBAccessTest.h; path = unit_tests/DBAccessTest.h; sourceTree = "<group>"; };
 		DAFC039F1126E2A700F33DF5 /* DBAccessTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DBAccessTest.m; path = unit_tests/DBAccessTest.m; sourceTree = "<group>"; };
@@ -201,6 +211,8 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				DADB563F12BD1BA100EB50D2 /* Norway.png */,
+				DADB563C12BD1B9C00EB50D2 /* Germany.png */,
 				DA003AFD1143EB8500C1300B /* icon.png */,
 				DA9F1A9D1142B6E700BC260B /* heinzelliste.txt */,
 				DAD144D2116FB27300F2EDD6 /* TranslationDetailView.xib */,
@@ -235,8 +247,6 @@
 			children = (
 				DAFC039E1126E2A700F33DF5 /* DBAccessTest.h */,
 				DAFC039F1126E2A700F33DF5 /* DBAccessTest.m */,
-				DAC79311113A88E000B3C55F /* FetchTranslationsTest.h */,
-				DAC79312113A88E000B3C55F /* FetchTranslationsTest.m */,
 			);
 			name = "Heinzelnisse Tests";
 			sourceTree = "<group>";
@@ -255,6 +265,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				DA9866BC12B80BC7004A7111 /* PBXTargetDependency */,
 			);
 			name = Heinzelnisse;
 			productName = Heinzelnisse;
@@ -324,8 +335,15 @@
 				ORGANIZATIONNAME = "Roman Bertolami";
 			};
 			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "Heinzelnisse" */;
-			compatibilityVersion = "Xcode 3.1";
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
 			hasScannedForEncodings = 1;
+			knownRegions = (
+				English,
+				Japanese,
+				French,
+				German,
+			);
 			mainGroup = 29B97314FDCFA39411CA2CEA /* Heinzelnisse */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -348,6 +366,8 @@
 				DA9F1A9F1142B6E700BC260B /* heinzelliste.txt in Resources */,
 				DA003AFF1143EB8500C1300B /* icon.png in Resources */,
 				DAD144D4116FB27300F2EDD6 /* TranslationDetailView.xib in Resources */,
+				DADB563D12BD1B9C00EB50D2 /* Germany.png in Resources */,
+				DADB564012BD1BA100EB50D2 /* Norway.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -367,6 +387,8 @@
 				DA9F1A9E1142B6E700BC260B /* heinzelliste.txt in Resources */,
 				DA003AFE1143EB8500C1300B /* icon.png in Resources */,
 				DAD144D6116FB27300F2EDD6 /* TranslationDetailView.xib in Resources */,
+				DADB563E12BD1B9C00EB50D2 /* Germany.png in Resources */,
+				DADB564112BD1BA100EB50D2 /* Norway.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -451,13 +473,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DAC79313113A88E000B3C55F /* FetchTranslationsTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		DA9866BC12B80BC7004A7111 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = DAC7922A113A7E8F00B3C55F /* LogicTests */;
+			targetProxy = DA9866BB12B80BC7004A7111 /* PBXContainerItemProxy */;
+		};
 		DAC79307113A888000B3C55F /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = DAC79300113A886100B3C55F /* HeinzelnisseTests */;
@@ -500,8 +526,9 @@
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.2;
 				PREBINDING = NO;
-				SDKROOT = iphoneos3.1;
+				SDKROOT = iphoneos4.2;
 			};
 			name = Debug;
 		};
@@ -514,7 +541,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				PREBINDING = NO;
-				SDKROOT = iphoneos3.1;
+				SDKROOT = iphoneos4.2;
 			};
 			name = Release;
 		};

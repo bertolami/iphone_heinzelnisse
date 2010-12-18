@@ -170,7 +170,7 @@
 															 initWithFetchRequest:fetchRequest
 															 managedObjectContext:managedObjectContext 
 															 sectionNameKeyPath:nil 
-															 cacheName:@"Root"];
+															 cacheName:nil];
 	aFetchedResultsController.delegate = self;
 	self.fetchedResultsController = aFetchedResultsController;
 	[aFetchedResultsController release];
