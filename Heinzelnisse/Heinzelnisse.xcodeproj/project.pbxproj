@@ -23,8 +23,6 @@
 		DA9F18D2113A91A000BC260B /* FirstView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA9F18BB113A90E900BC260B /* FirstView.xib */; };
 		DA9F1A9B1142B59B00BC260B /* Dataloader.m in Sources */ = {isa = PBXBuildFile; fileRef = DA9F1A9A1142B59B00BC260B /* Dataloader.m */; };
 		DA9F1A9C1142B59B00BC260B /* Dataloader.m in Sources */ = {isa = PBXBuildFile; fileRef = DA9F1A9A1142B59B00BC260B /* Dataloader.m */; };
-		DA9F1A9E1142B6E700BC260B /* heinzelliste.txt in Resources */ = {isa = PBXBuildFile; fileRef = DA9F1A9D1142B6E700BC260B /* heinzelliste.txt */; };
-		DA9F1A9F1142B6E700BC260B /* heinzelliste.txt in Resources */ = {isa = PBXBuildFile; fileRef = DA9F1A9D1142B6E700BC260B /* heinzelliste.txt */; };
 		DAC79235113A7EFA00B3C55F /* TranslationTest.m in Sources */ = {isa = PBXBuildFile; fileRef = DAC79234113A7EFA00B3C55F /* TranslationTest.m */; };
 		DAC79270113A813B00B3C55F /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA789EB611287F78000F1A03 /* CoreData.framework */; };
 		DAC792B4113A836C00B3C55F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
@@ -49,6 +47,8 @@
 		DADB563E12BD1B9C00EB50D2 /* Germany.png in Resources */ = {isa = PBXBuildFile; fileRef = DADB563C12BD1B9C00EB50D2 /* Germany.png */; };
 		DADB564012BD1BA100EB50D2 /* Norway.png in Resources */ = {isa = PBXBuildFile; fileRef = DADB563F12BD1BA100EB50D2 /* Norway.png */; };
 		DADB564112BD1BA100EB50D2 /* Norway.png in Resources */ = {isa = PBXBuildFile; fileRef = DADB563F12BD1BA100EB50D2 /* Norway.png */; };
+		DADB568B12BD260500EB50D2 /* heinzelnisse.txt in Resources */ = {isa = PBXBuildFile; fileRef = DADB568A12BD260500EB50D2 /* heinzelnisse.txt */; };
+		DADB568C12BD260500EB50D2 /* heinzelnisse.txt in Resources */ = {isa = PBXBuildFile; fileRef = DADB568A12BD260500EB50D2 /* heinzelnisse.txt */; };
 		DAFC037A11216F0F00F33DF5 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = DAFC037911216F0F00F33DF5 /* libsqlite3.dylib */; };
 /* End PBXBuildFile section */
 
@@ -90,7 +90,6 @@
 		DA9F18BB113A90E900BC260B /* FirstView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FirstView.xib; sourceTree = "<group>"; };
 		DA9F1A991142B59B00BC260B /* Dataloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Dataloader.h; sourceTree = "<group>"; };
 		DA9F1A9A1142B59B00BC260B /* Dataloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Dataloader.m; sourceTree = "<group>"; };
-		DA9F1A9D1142B6E700BC260B /* heinzelliste.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = heinzelliste.txt; sourceTree = "<group>"; };
 		DAC7922B113A7E8F00B3C55F /* LogicTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LogicTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DAC7922C113A7E8F00B3C55F /* LogicTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "LogicTests-Info.plist"; sourceTree = "<group>"; };
 		DAC79233113A7EFA00B3C55F /* TranslationTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TranslationTest.h; path = unit_tests/TranslationTest.h; sourceTree = "<group>"; };
@@ -101,8 +100,9 @@
 		DAD144D0116FB27300F2EDD6 /* TranslationDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TranslationDetailViewController.h; sourceTree = "<group>"; };
 		DAD144D1116FB27300F2EDD6 /* TranslationDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TranslationDetailViewController.m; sourceTree = "<group>"; };
 		DAD144D2116FB27300F2EDD6 /* TranslationDetailView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = TranslationDetailView.xib; path = Classes/TranslationDetailView.xib; sourceTree = "<group>"; };
-		DADB563C12BD1B9C00EB50D2 /* Germany.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Germany.png; path = ../../../../Desktop/Germany.png; sourceTree = SOURCE_ROOT; };
-		DADB563F12BD1BA100EB50D2 /* Norway.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Norway.png; path = ../../../../Desktop/Norway.png; sourceTree = SOURCE_ROOT; };
+		DADB563C12BD1B9C00EB50D2 /* Germany.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Germany.png; sourceTree = "<group>"; };
+		DADB563F12BD1BA100EB50D2 /* Norway.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Norway.png; sourceTree = "<group>"; };
+		DADB568A12BD260500EB50D2 /* heinzelnisse.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = heinzelnisse.txt; sourceTree = "<group>"; };
 		DAFC037911216F0F00F33DF5 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		DAFC039E1126E2A700F33DF5 /* DBAccessTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DBAccessTest.h; path = unit_tests/DBAccessTest.h; sourceTree = "<group>"; };
 		DAFC039F1126E2A700F33DF5 /* DBAccessTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DBAccessTest.m; path = unit_tests/DBAccessTest.m; sourceTree = "<group>"; };
@@ -211,10 +211,10 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				DADB568A12BD260500EB50D2 /* heinzelnisse.txt */,
 				DADB563F12BD1BA100EB50D2 /* Norway.png */,
 				DADB563C12BD1B9C00EB50D2 /* Germany.png */,
 				DA003AFD1143EB8500C1300B /* icon.png */,
-				DA9F1A9D1142B6E700BC260B /* heinzelliste.txt */,
 				DAD144D2116FB27300F2EDD6 /* TranslationDetailView.xib */,
 				DA9F18BB113A90E900BC260B /* FirstView.xib */,
 				28AD73870D9D96C1002E5188 /* MainWindow.xib */,
@@ -363,11 +363,11 @@
 			files = (
 				28AD73880D9D96C1002E5188 /* MainWindow.xib in Resources */,
 				DA9F18D2113A91A000BC260B /* FirstView.xib in Resources */,
-				DA9F1A9F1142B6E700BC260B /* heinzelliste.txt in Resources */,
 				DA003AFF1143EB8500C1300B /* icon.png in Resources */,
 				DAD144D4116FB27300F2EDD6 /* TranslationDetailView.xib in Resources */,
 				DADB563D12BD1B9C00EB50D2 /* Germany.png in Resources */,
 				DADB564012BD1BA100EB50D2 /* Norway.png in Resources */,
+				DADB568B12BD260500EB50D2 /* heinzelnisse.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -384,11 +384,11 @@
 			files = (
 				DAC7930C113A88A200B3C55F /* HeinzelnisseTests.octest in Resources */,
 				DAC792E0113A882400B3C55F /* MainWindow.xib in Resources */,
-				DA9F1A9E1142B6E700BC260B /* heinzelliste.txt in Resources */,
 				DA003AFE1143EB8500C1300B /* icon.png in Resources */,
 				DAD144D6116FB27300F2EDD6 /* TranslationDetailView.xib in Resources */,
 				DADB563E12BD1B9C00EB50D2 /* Germany.png in Resources */,
 				DADB564112BD1BA100EB50D2 /* Norway.png in Resources */,
+				DADB568C12BD260500EB50D2 /* heinzelnisse.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
