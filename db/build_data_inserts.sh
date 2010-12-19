@@ -1,1 +1,0 @@
-cat ~/heinzelnisse_txt.txt | perl -pe '$i += 1; chomp; @a = split /\t/; $_ = "INSERT INTO TRANSLATIONS VALUES($i, |$a[4]|, |$a[5]|, |$a[7]|, |$a[0]|, |$a[1]|, |$a[3]|);\n"' | perl -pe "s/\|/'/g" > translations_data.sql
