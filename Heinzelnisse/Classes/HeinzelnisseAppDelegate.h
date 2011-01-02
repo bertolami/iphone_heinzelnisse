@@ -21,6 +21,7 @@
 
 #import <UIKit/UIKit.h>
 #import <CoreData/CoreData.h>
+#import "DataManager.h";
 #import "FirstViewController.h"
 
 @interface HeinzelnisseAppDelegate : NSObject <UIApplicationDelegate, UITabBarControllerDelegate> {
@@ -28,7 +29,7 @@
 	NSManagedObjectModel *managedObjectModel;
 	NSManagedObjectContext *managedObjectContext;
 	NSPersistentStoreCoordinator *persistentStoreCoordinator;
-	
+	DataManager *dataManager;
 	UIWindow *window;
     IBOutlet FirstViewController *viewController;
 	IBOutlet UINavigationController *navigationController;

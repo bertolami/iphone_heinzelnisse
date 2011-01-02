@@ -20,7 +20,9 @@
 //
 
 #import "FirstViewController.h"
+#import "StringNormalizer.h"
 #import <stdlib.h>
+
 @interface FirstViewController (Private)
 
 - (NSString*) sortColumn;
@@ -29,6 +31,7 @@
 - (void) executeSearch;
 - (NSString*) stringWithDETranslation: (Translation*) aTranslation;
 - (NSString*) stringWithNOTranslation: (Translation*) aTranslation;
+- (NSPredicate*) buildPredicate;
 @end
 
 
@@ -40,11 +43,22 @@
 @synthesize tableView;
 @synthesize queryText;
 @synthesize translationDetailViewController;
+@synthesize activityIndicatorView;
+
 
 - (void) viewDidLoad {
 	[super viewDidLoad];
+	activityIndicatorView = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+	activityIndicatorView.frame = CGRectMake(0.0, 0.0, 40.0, 40.0);
+	activityIndicatorView.center = self.view.center;
+	[self.view addSubview: activityIndicatorView];
 	[searchBar becomeFirstResponder];
+	// pre-parse predicate for quick substitution
+    predicateTemplateDE = [[NSPredicate predicateWithFormat:@"wordDENorm >= $lowBound and wordDENorm < $highBound"] retain];
+    predicateTemplateNO = [[NSPredicate predicateWithFormat:@"wordNONorm >= $lowBound and wordNONorm < $highBound"] retain];
+	
 }
+
 
 - (void)controllerWillChangeContent:(NSFetchedResultsController *)controller {
 	NSLog(@"controller will change content");
@@ -65,22 +79,29 @@
 }
 
 - (void) executeSearch {
-	self.fetchedResultsController = nil;
 	self.queryText = self.searchBar.text;
-	NSError *error = nil;
+	if(! queryText) {
+		return;
+	}
+	[NSThread detachNewThreadSelector: @selector(spinBegin) toTarget:self withObject:nil];
+
+	[searchBar resignFirstResponder];
+	
+	self.fetchedResultsController = nil;
+		NSError *error = nil;
 	if(![self.fetchedResultsController performFetch:&error]) {
 		NSLog(@"Error occurred %@", error);
 	}
-	[searchBar resignFirstResponder];
-	NSLog(@"Result size ", [self numberOfRowsInSection:0]);
+	[NSThread detachNewThreadSelector: @selector(spinEnd) toTarget:self withObject:nil];
+	NSLog(@"Result size %d", [self numberOfRowsInSection:0]);
 	[self.tableView reloadData];
 	[tableView setContentOffset:CGPointMake(0, 0) animated:NO];
+
 }
 
 // Override to support row selection in the table view.
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	Translation *translation = [self.fetchedResultsController objectAtIndexPath:indexPath];
-	NSLog(@"Selected %@ adding to controller %@", translation, self.translationDetailViewController);
 	if([self isDE_NO]) {
 		[self.translationDetailViewController setDE_NOTranslation:translation];
 	} else {
@@ -90,25 +111,39 @@
 	[self.navigationController pushViewController:self.translationDetailViewController animated:YES];
 
 }
+- (void)spinBegin {
+	[activityIndicatorView startAnimating];
+}
+
+- (void)spinEnd {
+	[activityIndicatorView stopAnimating];
+}
 
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-	NSUInteger count = [[self.fetchedResultsController sections] count];
-    NSLog(@"numberOfSectionsInTableView %d", count);
-    
+	NSUInteger count = 0;
+	if(fetchedResultsController) {
+		count = [[self.fetchedResultsController sections] count];		
+	}
 	if (count == 0) {
-        count = 1;
-    }
-    return count;
+		count = 1;
+	}
+	NSLog(@"numberOfSectionsInTableView %d", count);
+	return count;
 }
 
 - (NSUInteger) numberOfRowsInSection: (NSInteger) section  {
-	NSArray *sections = [self.fetchedResultsController sections];
-    NSUInteger count = 0;
-    if ([sections count]) {
-        id <NSFetchedResultsSectionInfo> sectionInfo = [sections objectAtIndex:section];
-        count = [sectionInfo numberOfObjects];
-    }
+	
+	NSUInteger count = 0;
+    if(fetchedResultsController) {
+		
+		NSArray *sections = [self.fetchedResultsController sections];
+    
+		if ([sections count]) {
+			id <NSFetchedResultsSectionInfo> sectionInfo = [sections objectAtIndex:section];
+			count = [sectionInfo numberOfObjects];
+		}
+	}
 	NSLog(@"numberOfRowsInSection %d", count);
     
 	return count;
@@ -149,8 +184,27 @@
 
 }
 
+
+- (NSPredicate*) buildPredicate   {
+	NSPredicate * predicate;
+	NSString *lowBound = [StringNormalizer normalizeString: queryText];
+    NSString *highBound = [StringNormalizer upperBoundSearchString: lowBound];
+    
+    NSMutableDictionary *bindVariables = [[NSMutableDictionary alloc] init];
+    [bindVariables setObject:lowBound forKey:@"lowBound"];
+    [bindVariables setObject:highBound forKey:@"highBound"];
+    
+	if([self isDE_NO]) {
+		predicate = [predicateTemplateDE predicateWithSubstitutionVariables:bindVariables];
+	} else {
+		predicate = [predicateTemplateNO predicateWithSubstitutionVariables:bindVariables];
+	}
+
+	[bindVariables release];
+	return predicate;
+}
 -(NSFetchedResultsController*) fetchedResultsController {
-	if(fetchedResultsController !=nil) {
+	if(fetchedResultsController) {
 		return fetchedResultsController;
 	}
 	NSLog(@"Building Fetch Result Controller");
@@ -158,9 +212,10 @@
 	NSEntityDescription *entity = [NSEntityDescription entityForName:@"Translation" 
 											  inManagedObjectContext:managedObjectContext];
 	[fetchRequest setEntity:entity];
-	NSString *pattern = [[queryText stringByAppendingString:@"*"] stringByAppendingString:@"*"];
+	// [fetchRequest setFetchLimit:1000];
 	
-	NSPredicate *predicate = [NSPredicate predicateWithFormat:@"%K like[cd] %@", [self sortColumn], pattern];
+	NSPredicate *predicate = [self buildPredicate];
+
 	
 	[fetchRequest setPredicate:predicate];
 	NSLog(@"Fetch Request %@", fetchRequest);
@@ -201,7 +256,9 @@
 
 
 - (void)dealloc {
-    [super dealloc];
+    [activityIndicatorView dealloc];
+	[super dealloc];
+	
 }
 
 @end

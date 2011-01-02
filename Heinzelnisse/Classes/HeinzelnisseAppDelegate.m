@@ -22,7 +22,12 @@
 #import "HeinzelnisseAppDelegate.h"
 #import <Foundation/Foundation.h>
 #import "FirstViewController.h"
-#import "Dataloader.h"
+#import "DataManager.h"
+
+@interface HeinzelnisseAppDelegate (Private)
+- (NSString*) dbPath;
+
+@end
 
 @implementation HeinzelnisseAppDelegate
 
@@ -30,12 +35,15 @@
 @synthesize viewController;
 @synthesize navigationController;
 
+
 - (void)applicationDidFinishLaunching:(UIApplication *)application {
 	NSFileManager *fileManager = [NSFileManager defaultManager];
     NSError *error;
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *documentsDirectory = [paths objectAtIndex:0];
-    NSString *writableDBPath = [documentsDirectory stringByAppendingPathComponent:@"heinzelnisse.db"];
+    NSString *writableDBPath;
+	writableDBPath = [self dbPath];
+
+	dataManager= [[DataManager alloc] initWithManagedObjectContext:self.managedObjectContext dbPath: writableDBPath];
+	
 	BOOL loadData=NO;
     if(! [fileManager fileExistsAtPath:writableDBPath]) {
 		NSLog(@"DB File not found %@", writableDBPath);
@@ -49,13 +57,12 @@
 		}
 	}
 	if (loadData) {
-		Dataloader *loader = [[Dataloader alloc] initWithManagedObjectContext:self.managedObjectContext];
-		[loader load];
-		[loader release];
+		[dataManager loadFromTxtFileToCoreDataContext];
 	}
-	
+//	[dataManager createIndex];
 	self.viewController.managedObjectContext = [self managedObjectContext];
-    NSLog(@"Add the controller's current view %@ as a subview of the window %@", self.navigationController.view, window);
+ 
+	NSLog(@"Add the controller's current view %@ as a subview of the window %@", self.navigationController.view, window);
 	[window addSubview: self.navigationController.view];
 	NSLog(@"done");
 	
@@ -66,9 +73,7 @@
 		return persistentStoreCoordinator;
 	}
 	
-	NSURL *storeUrl = [NSURL fileURLWithPath: 
-					   [[self applicationDocumentsDirectory]
-						stringByAppendingPathComponent: @"heinzelnisse.db"]];
+	NSURL *storeUrl = [NSURL fileURLWithPath: [self dbPath]];
 	
 
 	NSError *error = nil;
@@ -117,6 +122,11 @@
 }
 */
 
+- (NSString *) dbPath {
+    NSString *writableDBPath = [[self applicationDocumentsDirectory] stringByAppendingPathComponent: @"heinzelnisse.db"];
+	return writableDBPath;
+}
+
 - (NSString *)applicationDocumentsDirectory {
 	NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,
 														 NSUserDomainMask,
@@ -129,6 +139,7 @@
 }
 
 - (void)dealloc {
+	[dataManager release];
 	[persistentStoreCoordinator release];
 	[managedObjectModel release];
 	[managedObjectContext release];
