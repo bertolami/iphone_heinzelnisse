@@ -23,6 +23,7 @@
 #import <CoreData/CoreData.h>
 #import "DataManager.h";
 #import "FirstViewController.h"
+#import "LoadViewController.h"
 
 @interface HeinzelnisseAppDelegate : NSObject <UIApplicationDelegate, UITabBarControllerDelegate> {
     
@@ -32,6 +33,7 @@
 	DataManager *dataManager;
 	UIWindow *window;
     IBOutlet FirstViewController *viewController;
+	IBOutlet LoadViewController *loadViewController;
 	IBOutlet UINavigationController *navigationController;
 }
 
@@ -42,6 +44,7 @@
 
 @property (nonatomic, retain) IBOutlet UIWindow *window;
 @property (nonatomic, retain) IBOutlet FirstViewController *viewController;
+@property (nonatomic, retain) IBOutlet LoadViewController *loadViewController;
 @property (nonatomic, retain) IBOutlet UINavigationController *navigationController;
 
 @end

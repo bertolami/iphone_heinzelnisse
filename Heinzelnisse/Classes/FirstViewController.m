@@ -26,7 +26,6 @@
 @interface FirstViewController (Private)
 
 - (NSString*) sortColumn;
-- (NSUInteger) numberOfRowsInSection: (NSInteger) section;
 - (BOOL) isDE_NO;
 - (void) executeSearch;
 - (NSString*) stringWithDETranslation: (Translation*) aTranslation;
@@ -43,57 +42,65 @@
 @synthesize tableView;
 @synthesize queryText;
 @synthesize translationDetailViewController;
-@synthesize activityIndicatorView;
+//@synthesize activityIndicatorView;
 
 
 - (void) viewDidLoad {
+	DebugLog(@"view did load");
 	[super viewDidLoad];
-	activityIndicatorView = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-	activityIndicatorView.frame = CGRectMake(0.0, 0.0, 40.0, 40.0);
-	activityIndicatorView.center = self.view.center;
-	[self.view addSubview: activityIndicatorView];
-	[searchBar becomeFirstResponder];
+//	activityIndicatorView = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+//	activityIndicatorView.frame = CGRectMake(0.0, 0.0, 40.0, 40.0);
+//	activityIndicatorView.center = self.view.center;
 	// pre-parse predicate for quick substitution
     predicateTemplateDE = [[NSPredicate predicateWithFormat:@"wordDENorm >= $lowBound and wordDENorm < $highBound"] retain];
     predicateTemplateNO = [[NSPredicate predicateWithFormat:@"wordNONorm >= $lowBound and wordNONorm < $highBound"] retain];
 	
 }
 
+- (void) viewDidAppear:(BOOL)animated {
+	DebugLog(@"view did appear");
+//	[self.view addSubview: activityIndicatorView];
+	
+	[super viewDidAppear:animated];
+	[searchBar becomeFirstResponder];
+	
+}
+
 
 - (void)controllerWillChangeContent:(NSFetchedResultsController *)controller {
-	NSLog(@"controller will change content");
+	DebugLog(@"controller will change content");
     [self.tableView beginUpdates];
 }
 - (void)controllerDidChangeContent:(NSFetchedResultsController *)controller {
-	NSLog(@"controller did change content");
+	DebugLog(@"controller did change content");
     [self.tableView endUpdates];
 }
 
 - (void)searchBar:(UISearchBar *)searchBar selectedScopeButtonIndexDidChange:(NSInteger)selectedScope {
-	NSLog(@"selectedScopeButtonIndexDidChange");
+	DebugLog(@"selectedScopeButtonIndexDidChange");
 	[self executeSearch];
 }
 - (void)searchBarSearchButtonClicked:(UISearchBar *)aSearchBar {
-	NSLog(@"searchButtonClicked");
+	DebugLog(@"searchButtonClicked");
 	[self executeSearch];
 }
 
 - (void) executeSearch {
+	
 	self.queryText = self.searchBar.text;
 	if(! queryText) {
 		return;
 	}
-	[NSThread detachNewThreadSelector: @selector(spinBegin) toTarget:self withObject:nil];
-
-	[searchBar resignFirstResponder];
 	
+	[searchBar resignFirstResponder];
+//	[NSThread detachNewThreadSelector: @selector(spinBegin) toTarget:self withObject:nil];
+
 	self.fetchedResultsController = nil;
 		NSError *error = nil;
 	if(![self.fetchedResultsController performFetch:&error]) {
-		NSLog(@"Error occurred %@", error);
+		ErrorLog(@"Error occurred %@", error);
 	}
-	[NSThread detachNewThreadSelector: @selector(spinEnd) toTarget:self withObject:nil];
-	NSLog(@"Result size %d", [self numberOfRowsInSection:0]);
+//	[NSThread detachNewThreadSelector: @selector(spinEnd) toTarget:self withObject:nil];
 	[self.tableView reloadData];
 	[tableView setContentOffset:CGPointMake(0, 0) animated:NO];
 
@@ -111,6 +118,7 @@
 	[self.navigationController pushViewController:self.translationDetailViewController animated:YES];
 
 }
+/*
 - (void)spinBegin {
 	[activityIndicatorView startAnimating];
 }
@@ -118,6 +126,7 @@
 - (void)spinEnd {
 	[activityIndicatorView stopAnimating];
 }
+ */
 
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -128,29 +137,25 @@
 	if (count == 0) {
 		count = 1;
 	}
-	NSLog(@"numberOfSectionsInTableView %d", count);
+	DebugLog(@"numberOfSectionsInTableView %d", count);
 	return count;
 }
 
-- (NSUInteger) numberOfRowsInSection: (NSInteger) section  {
-	
-	NSUInteger count = 0;
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    NSUInteger count = 0;
     if(fetchedResultsController) {
 		
 		NSArray *sections = [self.fetchedResultsController sections];
-    
+		
 		if ([sections count]) {
 			id <NSFetchedResultsSectionInfo> sectionInfo = [sections objectAtIndex:section];
 			count = [sectionInfo numberOfObjects];
 		}
 	}
-	NSLog(@"numberOfRowsInSection %d", count);
-    
+	DebugLog(@"numberOfRowsInSection %d", count);
 	return count;
-}
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    NSUInteger count = [self numberOfRowsInSection: section];
-	return count;
+	
 }
 
 - (UITableViewCell *)tableView:(UITableView *)aTableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -207,7 +212,7 @@
 	if(fetchedResultsController) {
 		return fetchedResultsController;
 	}
-	NSLog(@"Building Fetch Result Controller");
+	DebugLog(@"Building Fetch Result Controller");
 	NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
 	NSEntityDescription *entity = [NSEntityDescription entityForName:@"Translation" 
 											  inManagedObjectContext:managedObjectContext];
@@ -218,7 +223,7 @@
 
 	
 	[fetchRequest setPredicate:predicate];
-	NSLog(@"Fetch Request %@", fetchRequest);
+	DebugLog(@"Fetch Request %@", fetchRequest);
 	NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey: [self sortColumn] ascending:YES];
 	[fetchRequest setSortDescriptors:[NSArray arrayWithObject:sortDescriptor]];
 	NSFetchedResultsController *aFetchedResultsController = [[NSFetchedResultsController alloc] 
@@ -242,21 +247,10 @@
 - (BOOL) isDE_NO {
 	return searchBar.selectedScopeButtonIndex == 0;
 }
- - (void)didReceiveMemoryWarning {
-	// Releases the view if it doesn't have a superview.
-    [super didReceiveMemoryWarning];
-	
-	// Release any cached data, images, etc that aren't in use.
-}
-
-- (void)viewDidUnload {
-	// Release any retained subviews of the main view.
-	// e.g. self.myOutlet = nil;
-}
-
+ 
 
 - (void)dealloc {
-    [activityIndicatorView dealloc];
+  //	 [activityIndicatorView dealloc];
 	[super dealloc];
 	
 }

@@ -34,37 +34,67 @@
 @synthesize window;
 @synthesize viewController;
 @synthesize navigationController;
+@synthesize loadViewController;
 
-
-- (void)applicationDidFinishLaunching:(UIApplication *)application {
-	NSFileManager *fileManager = [NSFileManager defaultManager];
-    NSError *error;
-    NSString *writableDBPath;
-	writableDBPath = [self dbPath];
-
-	dataManager= [[DataManager alloc] initWithManagedObjectContext:self.managedObjectContext dbPath: writableDBPath];
-	
-	BOOL loadData=NO;
+- (BOOL) shouldLoadData: (NSString *) writableDBPath  {
+  BOOL loadData=NO;
+    NSFileManager *fileManager = [NSFileManager defaultManager];
     if(! [fileManager fileExistsAtPath:writableDBPath]) {
-		NSLog(@"DB File not found %@", writableDBPath);
+		DebugLog(@"DB File not found %@", writableDBPath);
 		loadData = YES;
 	} else {
-		NSLog(@"DB File found %@", writableDBPath);
+		DebugLog(@"DB File found %@", writableDBPath);
+		NSError *error;		
 		int filesize=[[fileManager attributesOfItemAtPath: writableDBPath error: &error] fileSize];
-		NSLog(@"File Size %d", filesize);
+		DebugLog(@"File Size %d", filesize);
 		if (filesize < 1000000) {
 			loadData = YES;
 		}
 	}
+  return loadData;
+}
+
+
+- (void) getInitialData:(id)obj  {
+	  NSAutoreleasePool * pool = [[NSAutoreleasePool alloc] init];
+	DebugLog(@"Get Initial Data");
+	NSString *writableDBPath;
+	writableDBPath = [self dbPath];
+	DebugLog(@"writable db path %@", writableDBPath);
+	dataManager= [[DataManager alloc] initWithManagedObjectContext:self.managedObjectContext dbPath: writableDBPath];
+	
+	BOOL loadData = [self shouldLoadData: writableDBPath];
+	
 	if (loadData) {
 		[dataManager loadFromTxtFileToCoreDataContext];
 	}
-//	[dataManager createIndex];
+	
+	DebugLog(@"done");
+	[pool release];
+	[self performSelectorOnMainThread:@selector(initDone:) withObject:nil waitUntilDone:NO];
+}
+
+- (void) initDone:(id)obj {
 	self.viewController.managedObjectContext = [self managedObjectContext];
- 
-	NSLog(@"Add the controller's current view %@ as a subview of the window %@", self.navigationController.view, window);
+	[loadViewController.view removeFromSuperview];
+	
 	[window addSubview: self.navigationController.view];
-	NSLog(@"done");
+	
+	DebugLog(@"Add the controller's current view %@ as a subview of the window %@", self.navigationController.view, window);
+	
+	
+}
+
+- (void)applicationDidFinishLaunching:(UIApplication *)application {
+	InfoLog(@"Starting Heinzelnisse");
+	[window addSubview:loadViewController.view];
+	
+	[self.loadViewController becomeFirstResponder];
+	[window bringSubviewToFront:loadViewController.view];
+	
+	[NSThread detachNewThreadSelector:@selector(getInitialData:) 
+							 toTarget:self withObject:nil];
+	
 	
 }
 
@@ -85,7 +115,7 @@
 														options:nil 
 														  error:&error]) {
 															  
-		NSLog(@"Error occurred %@", [error localizedDescription]);
+		DebugLog(@"Error occurred %@", [error localizedDescription]);
 	}
 	return persistentStoreCoordinator;
 }
@@ -110,17 +140,6 @@
 	}
 	return managedObjectContext;
 }
-/*
-// Optional UITabBarControllerDelegate method
-- (void)tabBarController:(UITabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController {
-}
-*/
-
-/*
-// Optional UITabBarControllerDelegate method
-- (void)tabBarController:(UITabBarController *)tabBarController didEndCustomizingViewControllers:(NSArray *)viewControllers changed:(BOOL)changed {
-}
-*/
 
 - (NSString *) dbPath {
     NSString *writableDBPath = [[self applicationDocumentsDirectory] stringByAppendingPathComponent: @"heinzelnisse.db"];
@@ -138,12 +157,23 @@
 	return basePath;
 }
 
+- (void)didReceiveMemoryWarning
+{ 
+	WarningLog(@"Memory Warning");
+	// default behavior is to release the view if it doesn't have a superview.
+	
+	// remember to clean up anything outside of this view's scope, such as
+	// data cached in the class instance and other global data.
+	[super didReceiveMemoryWarning];
+}
+
 - (void)dealloc {
 	[dataManager release];
 	[persistentStoreCoordinator release];
 	[managedObjectModel release];
 	[managedObjectContext release];
     [viewController release];
+	[loadViewController release];
 	[navigationController release];
     [window release];
     [super dealloc];

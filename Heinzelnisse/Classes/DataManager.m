@@ -35,7 +35,7 @@
 - (DataManager*) initWithManagedObjectContext: (NSManagedObjectContext*) ctx dbPath: (NSString*)path {
 	self = [super init];
 	if(self != nil) {
-		NSLog(@"Initializing Dataloader");
+		DebugLog(@"Initializing Dataloader");
 		[ctx retain];
 		managedObjectContext = ctx;
 		dbPath = path;
@@ -50,16 +50,16 @@
 	NSFileManager *fileManager = [NSFileManager defaultManager];
 	NSString *txtFile = [[NSBundle mainBundle] pathForResource:@"heinzelliste" ofType:@"txt"];
 	if(! [fileManager fileExistsAtPath:txtFile]) {
-		NSLog(@"Heinzelliste text file not found %@", txtFile);
+		DebugLog(@"Heinzelliste text file not found %@", txtFile);
 		
 	} else {
 		[self deleteAllRecords];
-		NSLog(@"loading contents of %@", txtFile);
+		DebugLog(@"loading contents of %@", txtFile);
 		NSError *error;
 		NSString *contents = [[NSString alloc] initWithContentsOfFile:txtFile encoding: NSUTF8StringEncoding error: &error];
 		NSArray *arrayOfLines = [contents componentsSeparatedByString:@"\n"];
 		[contents release];
-		NSLog(@"done size: %d lines", [arrayOfLines count]);
+		DebugLog(@"done size: %d lines", [arrayOfLines count]);
 		for (int i=0 ;i< [arrayOfLines count]; i++) {
 			NSString *line= [arrayOfLines objectAtIndex:i];
 			NSArray *columns = [line componentsSeparatedByString:@"\t"];
@@ -95,27 +95,27 @@
 }
 
 - (void) saveContext{
-	NSLog(@"saving context");
+	DebugLog(@"saving context");
 	NSError *saveError;
 	if(![managedObjectContext save:&saveError]) {
-		NSLog(@"error occurred %@", [saveError description]);
+		ErrorLog(@"error occurred %@", [saveError description]);
 	}
-	NSLog(@"done");
+	DebugLog(@"done");
 }
 
 // deprecated
 - (void) createIndex {
-	NSLog(@"creating index for db %@", dbPath);
+	DebugLog(@"creating index for db %@", dbPath);
 	NSString *createIndexWordDE = @"CREATE INDEX INDEX_ON_ZWORDDE ON ZTRANSLATION (ZWORDDE)";
 	const char *sqlStatement = [createIndexWordDE UTF8String]; 
 	sqlite3 *db;
 	int dbrc = sqlite3_open([dbPath UTF8String], &db);
 	if(dbrc) {
-		NSLog(@"couldn't open db at path: @%", dbPath);
+		WarningLog(@"couldn't open db at path: @%", dbPath);
 		return;
 	}
 	int res = sqlite3_exec(db,sqlStatement, NULL, NULL, NULL);
-	NSLog(@"finished creating index: %d",res);
+	DebugLog(@"finished creating index: %d",res);
 	sqlite3_close(db);
 }
 - (void) dealloc {

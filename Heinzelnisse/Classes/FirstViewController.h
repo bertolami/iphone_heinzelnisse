@@ -28,7 +28,7 @@
 	IBOutlet UISearchBar *searchBar;
 	IBOutlet UITableView *tableView;
 	IBOutlet TranslationDetailViewController *translationDetailViewController;
-	IBOutlet UIActivityIndicatorView *activityIndicatorView;
+	//IBOutlet UIActivityIndicatorView *activityIndicatorView;
 	
 	NSFetchedResultsController *fetchedResultsController;
 	NSManagedObjectContext *managedObjectContext;
@@ -36,7 +36,7 @@
 	NSPredicate *predicateTemplateDE;
 	NSPredicate *predicateTemplateNO;
 }
-@property (nonatomic, retain) IBOutlet UIActivityIndicatorView *activityIndicatorView;
+//@property (nonatomic, retain) IBOutlet UIActivityIndicatorView *activityIndicatorView;
 @property (nonatomic, retain) IBOutlet UISearchBar *searchBar;
 @property (nonatomic, retain) NSString *queryText;
 @property (nonatomic, retain) IBOutlet UITableView *tableView;

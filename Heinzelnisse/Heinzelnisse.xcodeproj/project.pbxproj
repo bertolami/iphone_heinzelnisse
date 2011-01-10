@@ -30,6 +30,12 @@
 		DA05D77312D0FDC2002CAD09 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765070DF74369002DB57D /* CoreGraphics.framework */; };
 		DA05D77412D0FDC2002CAD09 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = DAFC037911216F0F00F33DF5 /* libsqlite3.dylib */; };
 		DA05D77512D0FDC2002CAD09 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA789EB611287F78000F1A03 /* CoreData.framework */; };
+		DA05D7B712D1063D002CAD09 /* LoadView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA05D7B612D1063D002CAD09 /* LoadView.xib */; };
+		DA05D7B812D1063D002CAD09 /* LoadView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA05D7B612D1063D002CAD09 /* LoadView.xib */; };
+		DA05D7C112D1080C002CAD09 /* heinzelnisse_logo_nisse_small.png in Resources */ = {isa = PBXBuildFile; fileRef = DA05D7C012D1080C002CAD09 /* heinzelnisse_logo_nisse_small.png */; };
+		DA05D7C212D1080C002CAD09 /* heinzelnisse_logo_nisse_small.png in Resources */ = {isa = PBXBuildFile; fileRef = DA05D7C012D1080C002CAD09 /* heinzelnisse_logo_nisse_small.png */; };
+		DA05D7C612D1087D002CAD09 /* LoadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DA05D7C512D1087D002CAD09 /* LoadViewController.m */; };
+		DA05D7C712D1087D002CAD09 /* LoadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DA05D7C512D1087D002CAD09 /* LoadViewController.m */; };
 		DA1BEDEE12C9DB2000A6E9E2 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD73870D9D96C1002E5188 /* MainWindow.xib */; };
 		DA1BEDEF12C9DB2000A6E9E2 /* FirstView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA9F18BB113A90E900BC260B /* FirstView.xib */; };
 		DA1BEDF012C9DB2000A6E9E2 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = DA003AFD1143EB8500C1300B /* icon.png */; };
@@ -68,7 +74,7 @@
 			isa = PBXContainerItemProxy;
 			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = DA05D3BA12D09E4A002CAD09 /* HeinzelnisseTests */;
+			remoteGlobalIDString = DA05D3BA12D09E4A002CAD09;
 			remoteInfo = HeinzelnisseTests;
 		};
 		DA1BEDEC12C9DB2000A6E9E2 /* PBXContainerItemProxy */ = {
@@ -108,6 +114,10 @@
 		DA05D50212D0E758002CAD09 /* StringNormalizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StringNormalizer.h; sourceTree = "<group>"; };
 		DA05D53A12D0EA35002CAD09 /* Translation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Translation.h; sourceTree = "<group>"; };
 		DA05D53B12D0EA35002CAD09 /* Translation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Translation.m; sourceTree = "<group>"; };
+		DA05D7B612D1063D002CAD09 /* LoadView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoadView.xib; sourceTree = "<group>"; };
+		DA05D7C012D1080C002CAD09 /* heinzelnisse_logo_nisse_small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = heinzelnisse_logo_nisse_small.png; sourceTree = "<group>"; };
+		DA05D7C412D1087D002CAD09 /* LoadViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadViewController.h; sourceTree = "<group>"; };
+		DA05D7C512D1087D002CAD09 /* LoadViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoadViewController.m; sourceTree = "<group>"; };
 		DA1BEE0612C9DB2000A6E9E2 /* Heinzelnisse.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Heinzelnisse.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA789EB611287F78000F1A03 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		DA789ECE11288100000F1A03 /* Heinzelnisse.xcdatamodel */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = wrapper.xcdatamodel; name = Heinzelnisse.xcdatamodel; path = ../Heinzelnisse.xcdatamodel; sourceTree = "<group>"; };
@@ -190,6 +200,8 @@
 				DA9F1A9A1142B59B00BC260B /* DataManager.m */,
 				DAD144D0116FB27300F2EDD6 /* TranslationDetailViewController.h */,
 				DAD144D1116FB27300F2EDD6 /* TranslationDetailViewController.m */,
+				DA05D7C412D1087D002CAD09 /* LoadViewController.h */,
+				DA05D7C512D1087D002CAD09 /* LoadViewController.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -236,6 +248,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				DA05D7C012D1080C002CAD09 /* heinzelnisse_logo_nisse_small.png */,
 				DADB568A12BD260500EB50D2 /* heinzelliste.txt */,
 				DADB563F12BD1BA100EB50D2 /* Norway.png */,
 				DADB563C12BD1B9C00EB50D2 /* Germany.png */,
@@ -244,6 +257,7 @@
 				DA9F18BB113A90E900BC260B /* FirstView.xib */,
 				28AD73870D9D96C1002E5188 /* MainWindow.xib */,
 				8D1107310486CEB800E47090 /* Heinzelnisse-Info.plist */,
+				DA05D7B612D1063D002CAD09 /* LoadView.xib */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -405,6 +419,8 @@
 				DADB563D12BD1B9C00EB50D2 /* Germany.png in Resources */,
 				DADB564012BD1BA100EB50D2 /* Norway.png in Resources */,
 				DADB568B12BD260500EB50D2 /* heinzelliste.txt in Resources */,
+				DA05D7B812D1063D002CAD09 /* LoadView.xib in Resources */,
+				DA05D7C212D1080C002CAD09 /* heinzelnisse_logo_nisse_small.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -427,6 +443,8 @@
 				DA1BEDF212C9DB2000A6E9E2 /* Germany.png in Resources */,
 				DA1BEDF312C9DB2000A6E9E2 /* Norway.png in Resources */,
 				DA1BEDF412C9DB2000A6E9E2 /* heinzelliste.txt in Resources */,
+				DA05D7B712D1063D002CAD09 /* LoadView.xib in Resources */,
+				DA05D7C112D1080C002CAD09 /* heinzelnisse_logo_nisse_small.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -481,6 +499,7 @@
 				DAD144D3116FB27300F2EDD6 /* TranslationDetailViewController.m in Sources */,
 				DA05D50412D0E758002CAD09 /* StringNormalizer.m in Sources */,
 				DA05D53C12D0EA35002CAD09 /* Translation.m in Sources */,
+				DA05D7C712D1087D002CAD09 /* LoadViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -506,6 +525,7 @@
 				DA1BEDFC12C9DB2000A6E9E2 /* TranslationDetailViewController.m in Sources */,
 				DA05D50312D0E758002CAD09 /* StringNormalizer.m in Sources */,
 				DA05D53D12D0EA35002CAD09 /* Translation.m in Sources */,
+				DA05D7C612D1087D002CAD09 /* LoadViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
