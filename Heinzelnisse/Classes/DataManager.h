@@ -30,5 +30,4 @@
 }
 - (DataManager*) initWithManagedObjectContext: (NSManagedObjectContext*) ctx dbPath: (NSString*) path;
 - (void) loadFromTxtFileToCoreDataContext ;
-- (void) createIndex;
 @end

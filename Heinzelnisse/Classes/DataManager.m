@@ -26,7 +26,6 @@
 @interface DataManager (Private)
 
 -(void) saveContext;
--(void) deleteAllRecords;
 
 @end
 
@@ -45,26 +44,36 @@
 
 
 - (void) loadFromTxtFileToCoreDataContext {
+	// double before = [[NSDate date] timeIntervalSince1970];
+	DebugLog(@"loadFromTxtFileToCoreDataContext start");
 	NSAutoreleasePool * pool = [[NSAutoreleasePool alloc] init];
-    
-	NSFileManager *fileManager = [NSFileManager defaultManager];
+    NSFileManager *fileManager = [NSFileManager defaultManager];
 	NSString *txtFile = [[NSBundle mainBundle] pathForResource:@"heinzelliste" ofType:@"txt"];
 	if(! [fileManager fileExistsAtPath:txtFile]) {
 		DebugLog(@"Heinzelliste text file not found %@", txtFile);
-		
 	} else {
-		[self deleteAllRecords];
 		DebugLog(@"loading contents of %@", txtFile);
 		NSError *error;
+		NSUInteger count = 0, LOOP_LIMIT = 8000; // batch size
+		Translation *t = nil;
+		
 		NSString *contents = [[NSString alloc] initWithContentsOfFile:txtFile encoding: NSUTF8StringEncoding error: &error];
 		NSArray *arrayOfLines = [contents componentsSeparatedByString:@"\n"];
 		[contents release];
 		DebugLog(@"done size: %d lines", [arrayOfLines count]);
+		NSAutoreleasePool *innerPool = [[NSAutoreleasePool alloc] init];
 		for (int i=0 ;i< [arrayOfLines count]; i++) {
+			count++;
+			if(count == LOOP_LIMIT) {
+				[self saveContext];
+				count = 0;
+				[innerPool drain];
+				innerPool = [[NSAutoreleasePool alloc] init];
+			}
 			NSString *line= [arrayOfLines objectAtIndex:i];
 			NSArray *columns = [line componentsSeparatedByString:@"\t"];
 			if([columns count] > 7) {
-				Translation *t = [NSEntityDescription insertNewObjectForEntityForName:@"Translation" inManagedObjectContext:managedObjectContext];
+				t = [NSEntityDescription insertNewObjectForEntityForName:@"Translation" inManagedObjectContext:managedObjectContext];
 				t.wordDE = [columns objectAtIndex:4];
 				t.wordDENorm = [StringNormalizer normalizeString:[columns objectAtIndex:4]];
 				t.articleDE = [columns objectAtIndex:5];
@@ -78,46 +87,26 @@
 			}
 		}
 		[self saveContext];
+		[innerPool drain];
 	}
 
 	[pool release];
+//	double after = [[NSDate date] timeIntervalSince1970];
+	
+	//ErrorLog(@"loadFromTxtFileToCoreDataContext done %0.4f", (after - before));
+	
 	
 }
 
--(void) deleteAllRecords {
-	NSFetchRequest * fetch = [[[NSFetchRequest alloc] init] autorelease];
-	[fetch setEntity:[NSEntityDescription entityForName:@"Translation" inManagedObjectContext:managedObjectContext]];
-	NSArray * result = [managedObjectContext executeFetchRequest:fetch error:nil];
-	for (id basket in result){
-		[managedObjectContext deleteObject:basket];
-	}		
-	[self saveContext];
-}
 
 - (void) saveContext{
-	DebugLog(@"saving context");
 	NSError *saveError;
 	if(![managedObjectContext save:&saveError]) {
 		ErrorLog(@"error occurred %@", [saveError description]);
 	}
-	DebugLog(@"done");
+	[managedObjectContext reset];
 }
 
-// deprecated
-- (void) createIndex {
-	DebugLog(@"creating index for db %@", dbPath);
-	NSString *createIndexWordDE = @"CREATE INDEX INDEX_ON_ZWORDDE ON ZTRANSLATION (ZWORDDE)";
-	const char *sqlStatement = [createIndexWordDE UTF8String]; 
-	sqlite3 *db;
-	int dbrc = sqlite3_open([dbPath UTF8String], &db);
-	if(dbrc) {
-		WarningLog(@"couldn't open db at path: @%", dbPath);
-		return;
-	}
-	int res = sqlite3_exec(db,sqlStatement, NULL, NULL, NULL);
-	DebugLog(@"finished creating index: %d",res);
-	sqlite3_close(db);
-}
 - (void) dealloc {
 	[managedObjectContext release];
 	[super dealloc];

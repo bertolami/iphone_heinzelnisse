@@ -63,7 +63,7 @@
 	DebugLog(@"writable db path %@", writableDBPath);
 	dataManager= [[DataManager alloc] initWithManagedObjectContext:self.managedObjectContext dbPath: writableDBPath];
 	
-	BOOL loadData = [self shouldLoadData: writableDBPath];
+	BOOL loadData = YES;[self shouldLoadData: writableDBPath];
 	
 	if (loadData) {
 		[dataManager loadFromTxtFileToCoreDataContext];
@@ -137,6 +137,7 @@
 	if(coordinator != nil) {
 		managedObjectContext = [[NSManagedObjectContext alloc] init];
 		[managedObjectContext setPersistentStoreCoordinator:coordinator];
+		[managedObjectContext setUndoManager:nil];
 	}
 	return managedObjectContext;
 }

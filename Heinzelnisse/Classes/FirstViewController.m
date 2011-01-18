@@ -54,18 +54,11 @@
 	// pre-parse predicate for quick substitution
     predicateTemplateDE = [[NSPredicate predicateWithFormat:@"wordDENorm >= $lowBound and wordDENorm < $highBound"] retain];
     predicateTemplateNO = [[NSPredicate predicateWithFormat:@"wordNONorm >= $lowBound and wordNONorm < $highBound"] retain];
-	
-}
-
-- (void) viewDidAppear:(BOOL)animated {
-	DebugLog(@"view did appear");
-//	[self.view addSubview: activityIndicatorView];
-	
-	[super viewDidAppear:animated];
 	[searchBar becomeFirstResponder];
 	
 }
 
+ 
 
 - (void)controllerWillChangeContent:(NSFetchedResultsController *)controller {
 	DebugLog(@"controller will change content");

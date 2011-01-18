@@ -7,7 +7,7 @@
     #import <UIKit/UIKit.h>
 #endif
 
-#define HEINZELNISSE_DEBUG
+// #define HEINZELNISSE_DEBUG
 
 #ifdef HEINZELNISSE_DEBUG
 #define DebugLog( s, ... ) NSLog( @"DEBUG <%p %@:(%d)> %@", self, [[NSString stringWithUTF8String:__FILE__] lastPathComponent], __LINE__, [NSString stringWithFormat:(s), ##__VA_ARGS__] )
