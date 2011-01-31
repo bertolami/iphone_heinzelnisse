@@ -63,7 +63,7 @@
 	DebugLog(@"writable db path %@", writableDBPath);
 	dataManager= [[DataManager alloc] initWithManagedObjectContext:self.managedObjectContext dbPath: writableDBPath];
 	
-	BOOL loadData = YES;[self shouldLoadData: writableDBPath];
+	BOOL loadData = [self shouldLoadData: writableDBPath];
 	
 	if (loadData) {
 		[dataManager loadFromTxtFileToCoreDataContext];
