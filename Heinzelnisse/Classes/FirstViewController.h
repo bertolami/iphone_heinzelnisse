@@ -33,12 +33,15 @@
 	NSFetchedResultsController *fetchedResultsController;
 	NSManagedObjectContext *managedObjectContext;
 	NSString *queryText;
+	BOOL emptyResult;
 	NSPredicate *predicateTemplateDE;
 	NSPredicate *predicateTemplateNO;
 }
 //@property (nonatomic, retain) IBOutlet UIActivityIndicatorView *activityIndicatorView;
 @property (nonatomic, retain) IBOutlet UISearchBar *searchBar;
 @property (nonatomic, retain) NSString *queryText;
+@property BOOL emptyResult;
+
 @property (nonatomic, retain) IBOutlet UITableView *tableView;
 @property(nonatomic, retain) IBOutlet TranslationDetailViewController *translationDetailViewController;
 @property (nonatomic, retain) NSFetchedResultsController *fetchedResultsController;

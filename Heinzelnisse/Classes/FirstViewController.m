@@ -41,20 +41,20 @@
 @synthesize searchBar;
 @synthesize tableView;
 @synthesize queryText;
+@synthesize emptyResult;
 @synthesize translationDetailViewController;
-//@synthesize activityIndicatorView;
 
 
 - (void) viewDidLoad {
 	DebugLog(@"view did load");
 	[super viewDidLoad];
-//	activityIndicatorView = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-//	activityIndicatorView.frame = CGRectMake(0.0, 0.0, 40.0, 40.0);
-//	activityIndicatorView.center = self.view.center;
+	self.emptyResult = NO;
+	
 	// pre-parse predicate for quick substitution
     predicateTemplateDE = [[NSPredicate predicateWithFormat:@"wordDENorm >= $lowBound and wordDENorm < $highBound"] retain];
     predicateTemplateNO = [[NSPredicate predicateWithFormat:@"wordNONorm >= $lowBound and wordNONorm < $highBound"] retain];
 	[searchBar becomeFirstResponder];
+	
 	
 }
 
@@ -81,6 +81,7 @@
 - (void) executeSearch {
 	
 	self.queryText = self.searchBar.text;
+	self.emptyResult = NO;
 	if(! queryText) {
 		return;
 	}
@@ -96,11 +97,14 @@
 //	[NSThread detachNewThreadSelector: @selector(spinEnd) toTarget:self withObject:nil];
 	[self.tableView reloadData];
 	[tableView setContentOffset:CGPointMake(0, 0) animated:NO];
-
+	self.queryText = nil;
 }
 
 // Override to support row selection in the table view.
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+	if(self.emptyResult) {
+		return;
+	}
 	Translation *translation = [self.fetchedResultsController objectAtIndexPath:indexPath];
 	if([self isDE_NO]) {
 		[self.translationDetailViewController setDE_NOTranslation:translation];
@@ -111,15 +115,7 @@
 	[self.navigationController pushViewController:self.translationDetailViewController animated:YES];
 
 }
-/*
-- (void)spinBegin {
-	[activityIndicatorView startAnimating];
-}
 
-- (void)spinEnd {
-	[activityIndicatorView stopAnimating];
-}
- */
 
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -134,10 +130,10 @@
 	return count;
 }
 
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+/* private helper */
+- (NSInteger) numberOfRowsInSection:(NSInteger)section {
     NSUInteger count = 0;
-    if(fetchedResultsController) {
+	if(fetchedResultsController) {
 		
 		NSArray *sections = [self.fetchedResultsController sections];
 		
@@ -146,10 +142,25 @@
 			count = [sectionInfo numberOfObjects];
 		}
 	}
+	
 	DebugLog(@"numberOfRowsInSection %d", count);
+	return count;
+}
+
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    NSUInteger count = [self numberOfRowsInSection:section];
+	if(count == 0 && self.queryText) {
+		
+		// cell to display that no data has been found
+		self.emptyResult = YES;
+		count = 1;
+	}
 	return count;
 	
 }
+
+
 
 - (UITableViewCell *)tableView:(UITableView *)aTableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 	
@@ -158,9 +169,15 @@
 	if(cell == nil) {
 		cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier] autorelease];
 	}
-    Translation *translation = [self.fetchedResultsController objectAtIndexPath:indexPath];
-	cell.textLabel.text = [self isDE_NO] ? [self stringWithDETranslation: translation] : [self stringWithNOTranslation:translation];
-	cell.detailTextLabel.text = [self isDE_NO] ? [self stringWithNOTranslation: translation] : [self stringWithDETranslation:translation];		
+
+    if (self.emptyResult) {
+		cell.textLabel.text = @"Keine Suchergebnisse gefunden";
+		cell.detailTextLabel.text = nil;
+	} else {		
+		Translation *translation = [self.fetchedResultsController objectAtIndexPath:indexPath];
+		cell.textLabel.text = [self isDE_NO] ? [self stringWithDETranslation: translation] : [self stringWithNOTranslation:translation];
+		cell.detailTextLabel.text = [self isDE_NO] ? [self stringWithNOTranslation: translation] : [self stringWithDETranslation:translation];		
+	}
 	return cell;
 }
 
